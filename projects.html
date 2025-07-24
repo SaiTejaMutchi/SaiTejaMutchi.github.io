@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Sai Teja Mutchi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .project-detail {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+        }
+        
+        .project-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .project-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+        
+        .project-subtitle {
+            font-size: 1.25rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+        
+        .quick-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .fact {
+            text-align: center;
+        }
+        
+        .fact-label {
+            font-size: 0.875rem;
+            color: #64748b;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .fact-value {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+        
+        .impact-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .metric-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-radius: 8px;
+        }
+        
+        .metric-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2563eb;
+            display: block;
+        }
+        
+        .metric-description {
+            font-size: 0.875rem;
+            color: #1e40af;
+            font-weight: 500;
+        }
+        
+        .approach-steps {
+            counter-reset: step-counter;
+        }
+        
+        .step {
+            counter-increment: step-counter;
+            margin-bottom: 1.5rem;
+            padding-left: 3rem;
+            position: relative;
+        }
+        
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #2563eb;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .step h3 {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .back-to-top {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .projects-nav {
+            background: #f8fafc;
+            padding: 2rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link-btn {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link-btn:hover,
+        .nav-link-btn.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Sai Teja Mutchi</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="projects.html" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="resume.html" class="nav-link">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Projects Navigation -->
+    <section class="projects-nav" style="margin-top: 70px;">
+        <div class="container">
+            <div class="nav-links">
+                <a href="#project1" class="nav-link-btn active">AI Learning Platform</a>
+                <a href="#project2" class="nav-link-btn">Investment Intelligence</a>
+                <a href="#project3" class="nav-link-btn">Power Grid Optimization</a>
+                <a href="#project4" class="nav-link-btn">Legal Tech Innovation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project 1: Columbia Build Lab -->
+    <section id="project1" class="container" style="padding: 3rem 0;">
+        <div class="project-detail">
+            <div class="project-header">
+                <h1 class="project-title">AI-Powered Learning Platform Optimization</h1>
+                <p class="project-subtitle">Scaling educational technology through user research and data-driven product strategy</p>
+            </div>
+
+            <div class="quick-facts">
+                <div class="fact">
+                    <div class="fact-label">Timeline</div>
+                    <div class="fact-value">Jan - May 2025</div>
+                </div>
+                <div class="fact">
+                    <div class="fact-label">Role</div>
+                    <div class="fact-value">Product Manager</div>
+                </div>
+                <div class="fact">
+                    <div class="fact-label">Users Served</div>
+                    <div class="fact-value">1,000+ weekly</div>
+                </div>
+                <div class="fact">
+                    <div class="fact-label">Team Size</div>
+                    <div class="fact-value">5 people</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>The Challenge</h2>
+                <p>Columbia Build Lab's AI-powered transcription platform was experiencing low user engagement despite serving educational content to 1,000+ weekly users. Students were not completing courses, session times were short, and the platform struggled to retain users beyond initial signup. The challenge was to identify why users weren't engaging and develop a systematic approach to improve platform stickiness while supporting the underlying AI transcription technology.</p>
+            </div>
+
+            <div class="section">
+                <h2>My Strategic Approach</h2>
+                <div class="approach-steps">
+                    <div class="step">
+                        <h3>User Research & Data Analysis</h3>
+                        <p>Conducted 15+ structured user interviews across 3 distinct customer segments (undergraduate students, graduate students, and working professionals). Analyzed user behavior data using SQL queries and Python to identify drop-off points and usage patterns.</p>
+                    </div>
+                    <div class="step">
+                        <h3>A/B Testing Framework Implementation</h3>
+                        <p>Designed and executed systematic A/B testing protocols with rigorous statistical significance testing. Created hypothesis-driven experiments for UI improvements, content organization, and user onboarding flows.</p>
+                    </div>
+                    <div class="step">
+                        <h3>Product
