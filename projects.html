@@ -4,626 +4,1168 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Sai Teja Mutchi</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .project-detail {
-            max-width: 800px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            margin-bottom: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
         }
-        
-        .project-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .project-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 1rem;
-        }
-        
-        .project-subtitle {
-            font-size: 1.25rem;
-            color: #64748b;
-            margin-bottom: 2rem;
-        }
-        
-        .quick-facts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            background: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-        }
-        
-        .fact {
-            text-align: center;
-        }
-        
-        .fact-label {
-            font-size: 0.875rem;
-            color: #64748b;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-        
-        .fact-value {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: #1e293b;
-        }
-        
-        .section {
-            margin-bottom: 2.5rem;
-        }
-        
-        .section h2 {
+
+        .nav-logo a {
             font-size: 1.5rem;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 0.5rem;
-        }
-        
-        .impact-metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .metric-card {
-            text-align: center;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-            border-radius: 8px;
-        }
-        
-        .metric-number {
-            font-size: 2rem;
             font-weight: 700;
-            color: #2563eb;
-            display: block;
+            color: #1e293b;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
         }
-        
-        .metric-description {
-            font-size: 0.875rem;
-            color: #1e40af;
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #64748b;
+            text-decoration: none;
             font-weight: 500;
-        }
-        
-        .approach-steps {
-            counter-reset: step-counter;
-        }
-        
-        .step {
-            counter-increment: step-counter;
-            margin-bottom: 1.5rem;
-            padding-left: 3rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
             position: relative;
         }
-        
-        .step::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: #2563eb;
-            color: white;
-            width: 2rem;
-            height: 2rem;
+
+        .nav-menu a:hover {
+            color: #3498db;
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        .nav-menu a.active {
+            color: #3498db;
+            background: rgba(52, 152, 219, 0.15);
+        }
+
+        /* Slide Navigation Dots */
+        .slide-navigation {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-dot.active {
+            background: #3498db;
+            border-color: #3498db;
+            transform: scale(1.2);
+        }
+
+        .nav-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* Slider Container */
+        .slider-container {
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            height: 100vh;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 600;
+            position: relative;
+            padding-top: 80px;
         }
-        
-        .step h3 {
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 0.5rem;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
         }
-        
-        .back-to-top {
+
+        /* Slide 1: Business Strategy - Dark Blue Theme */
+        .slide-1 {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+        }
+
+        /* Slide 2: AI Technology - Teal Theme */
+        .slide-2 {
+            background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%);
+            color: white;
+        }
+
+        /* Slide 3: Awards - Light Theme */
+        .slide-3 {
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+
+        .slide h2 {
+            font-size: 2rem;
+            font-weight: 700;
             text-align: center;
-            margin: 3rem 0;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
         }
-        
-        .projects-nav {
-            background: #f8fafc;
-            padding: 2rem 0;
+
+        .slide-subtitle {
+            text-align: center;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
         }
-        
-        .nav-links {
-            display: flex;
-            justify-content: center;
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
-            flex-wrap: wrap;
+            margin-top: 1rem;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
         }
-        
-        .nav-link-btn {
-            padding: 0.5rem 1rem;
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            text-decoration: none;
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 1.75rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            height: fit-content;
+            min-height: 420px;
+        }
+
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Category-specific accents */
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .slide-1 .project-card::before {
+            background: linear-gradient(90deg, #3498db, #2980b9);
+        }
+
+        .slide-2 .project-card::before {
+            background: linear-gradient(90deg, #1abc9c, #16a085);
+        }
+
+        .slide-3 .project-card::before {
+            background: linear-gradient(90deg, #f39c12, #e67e22);
+        }
+
+        .project-header {
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.3;
+        }
+
+        .project-subtitle {
+            font-size: 0.75rem;
+            color: #64748b;
+            line-height: 1.3;
+        }
+
+        .challenge-section {
+            background: rgba(231, 76, 60, 0.08);
+            padding: 0.75rem;
+            border-radius: 8px;
+            border-left: 3px solid #e74c3c;
+            margin-bottom: 1rem;
+        }
+
+        .challenge-title {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #c0392b;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .challenge-text {
+            font-size: 0.7rem;
+            color: #2c3e50;
+            line-height: 1.3;
+        }
+
+        .key-metrics {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .metric {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem 0.5rem;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+
+        .slide-2 .metric {
+            background: rgba(26, 188, 156, 0.1);
+            border-color: rgba(26, 188, 156, 0.2);
+        }
+
+        .slide-3 .metric {
+            background: rgba(243, 156, 18, 0.1);
+            border-color: rgba(243, 156, 18, 0.2);
+        }
+
+        .metric-number {
+            font-size: 1.2rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 0.1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .slide-1 .metric-number { color: #3498db; }
+        .slide-2 .metric-number { color: #1abc9c; }
+        .slide-3 .metric-number { color: #f39c12; }
+
+        .metric-label {
+            font-size: 0.65rem;
             color: #64748b;
             font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .view-more-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            border: none;
+            border-radius: 8px;
+            padding: 0.6rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.75rem;
+        }
+
+        .slide-2 .view-more-btn {
+            background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
+        }
+
+        .slide-3 .view-more-btn {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        }
+
+        .view-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Award badge */
+        .award-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            margin: 1rem;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #f1f5f9;
+            border: none;
+            border-radius: 50%;
+            width: 2.5rem;
+            height: 2.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #64748b;
             transition: all 0.3s ease;
         }
-        
-        .nav-link-btn:hover,
-        .nav-link-btn.active {
-            background: #2563eb;
-            color: white;
-            border-color: #2563eb;
+
+        .modal-close:hover {
+            background: #e2e8f0;
+            color: #1e293b;
+        }
+
+        .modal-header {
+            margin-bottom: 2rem;
+            padding-right: 3rem;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .modal-subtitle {
+            font-size: 1rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        .modal-section {
+            margin-bottom: 2rem;
+        }
+
+        .modal-section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-section-content {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+
+        .modal-section-content ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .modal-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .modal-metric {
+            text-align: center;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .modal-metric-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #3498db;
+            display: block;
+            margin-bottom: 0.25rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .modal-metric-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .slide h2 {
+                font-size: 1.8rem;
+            }
+            
+            .key-metrics {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .project-card {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html">Sai Teja Mutchi</a>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="about.html" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="projects.html" class="nav-link">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a href="resume.html" class="nav-link">Resume</a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact.html" class="nav-link">Contact</a>
-                </li>
-            </ul>
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <a href="index.html">Sai Teja Mutchi</a>
         </div>
-    </nav>
-
-    <!-- Projects Navigation -->
-    <section class="projects-nav" style="margin-top: 70px;">
-        <div class="container">
-            <div class="nav-links">
-                <a href="#project1" class="nav-link-btn active">AI Learning Platform</a>
-                <a href="#project2" class="nav-link-btn">Investment Intelligence</a>
-                <a href="#project3" class="nav-link-btn">Power Grid Optimization</a>
-                <a href="#project4" class="nav-link-btn">Legal Tech Innovation</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Project 1: Columbia Build Lab -->
-    <section id="project1" class="container" style="padding: 3rem 0;">
-        <div class="project-detail">
-            <div class="project-header">
-                <h1 class="project-title">AI-Powered Learning Platform Optimization</h1>
-                <p class="project-subtitle">Scaling educational technology through user research and data-driven product strategy</p>
-            </div>
-
-            <div class="quick-facts">
-                <div class="fact">
-                    <div class="fact-label">Timeline</div>
-                    <div class="fact-value">Jan - May 2025</div>
-                </div>
-                <div class="fact">
-                    <div class="fact-label">Role</div>
-                    <div class="fact-value">Product Manager</div>
-                </div>
-                <div class="fact">
-                    <div class="fact-label">Users Served</div>
-                    <div class="fact-value">1,000+ weekly</div>
-                </div>
-                <div class="fact">
-                    <div class="fact-label">Team Size</div>
-                    <div class="fact-value">5 people</div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>The Challenge</h2>
-                <p>Columbia Build Lab's AI-powered transcription platform was experiencing low user engagement despite serving educational content to 1,000+ weekly users. Students were not completing courses, session times were short, and the platform struggled to retain users beyond initial signup. The challenge was to identify why users weren't engaging and develop a systematic approach to improve platform stickiness while supporting the underlying AI transcription technology.</p>
-            </div>
-
-            <div class="section">
-                <h2>My Strategic Approach</h2>
-                <div class="approach-steps">
-                    <div class="step">
-                        <h3>User Research & Data Analysis</h3>
-                        <p>Conducted 15+ structured user interviews across 3 distinct customer segments (undergraduate students, graduate students, and working professionals). Analyzed user behavior data using SQL queries and Python to identify drop-off points and usage patterns.</p>
-                    </div>
-                    <div class="step">
-                        <h3>A/B Testing Framework Implementation</h3>
-                        <p>Designed and executed systematic A/B testing protocols with rigorous statistical significance testing. Created hypothesis-driven experiments for UI improvements, content organization, and user onboarding flows.</p>
-                    </div>
-                    <div class="step">
-                        <h3>Analytics Infrastructure Development</h3>
-                        <p>Built comprehensive analytics infrastructure using database queries and API integration. Created real-time decision frameworks for cross-functional teams and established data quality standards that improved platform reliability.</p>
-                    </div>
-                    <div class="step">
-                        <h3>Cross-Functional Execution</h3>
-                        <p>Led systematic process improvements and quality assurance protocols, mentoring junior developers on best practices. Coordinated with engineering, design, and content teams to ensure aligned execution.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Key Results & Impact</h2>
-                <div class="impact-metrics">
-                    <div class="metric-card">
-                        <span class="metric-number">22%</span>
-                        <span class="metric-description">User Engagement Improvement</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-number">2</span>
-                        <span class="metric-description">Sprints Reduced in Dev Cycles</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-number">1,000+</span>
-                        <span class="metric-description">Weekly Active Users Served</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-number">10x</span>
-                        <span class="metric-description">User Growth Projections Supported</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Technical Implementation</h2>
-                <p>Self-directed learning of Django and AWS architecture enabled rapid prototyping and deployment of customer-focused features. Implemented ML-based speech recognition APIs and statistical significance testing frameworks to optimize user flows through data-driven product iterations. The platform now scales to support 10x user growth projections with improved reliability and performance.</p>
-            </div>
-
-            <div class="section">
-                <h2>Business Impact & Learnings</h2>
-                <p><strong>Strategic Value:</strong> This project demonstrated how user-centered product development combined with technical implementation can drive measurable business outcomes. The 22% engagement improvement translated to increased user retention and course completion rates.</p>
-                
-                <p><strong>Key Insights:</strong> The most impactful changes came from understanding user workflow rather than adding features. Simple UX improvements and personalized content recommendations had greater impact than complex technical enhancements.</p>
-                
-                <p><strong>What I'd Do Differently:</strong> Earlier integration of user feedback loops and more granular cohort analysis to understand long-term user behavior patterns.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Project 2: Investment Intelligence -->
-    <section id="project2" class="container" style="padding: 3rem 0;">
-        <div class="project-detail">
-            <div class="project-header">
-                <h1 class="project-title">AI-Powered Investment Intelligence Platform</h1>
-                <p class="project-subtitle">Automating financial due diligence through advanced RAG pipelines and custom ML models</p>
-            </div>
-
-            <div class="quick-facts">
-                <div class="fact">
-                    <div class="fact-label">Timeline</div>
-                    <div class="fact-value">Jan - May 2025</div>
-                </div>
-                <div class="fact">
-                    <div class="fact-label">Role</div>
-                    <div class="fact-value">Technical Lead</div>
-                </div>
-                <div class="fact">
-                    <div class="fact-label">Accuracy Achieved</div>
-                    <div class="fact-value">87% F1 Score</div>
-                </div>
-                <div class="fact">
-                    <div class="fact-label">Technology</div>
-                    <div class="fact-value">GPT-4, RAG, ML</div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Strategic Challenge</h2>
-                <p>Financial due diligence typically requires 40+ hours of manual document review per deal, with analysts sifting through 10-K/Q filings, earnings reports, and unstructured financial documents. This manual process is prone to errors, inconsistent across analysts, and creates bottlenecks in investment decision-making. The goal was to build an AI system that could automate this analysis while maintaining accuracy and providing transparent source attribution.</p>
-            </div>
-
-            <div class="section">
-                <h2>Technical Architecture & Business Strategy</h2>
-                <div class="approach-steps">
-                    <div class="step">
-                        <h3>End-to-End RAG Pipeline Development</h3>
-                        <p>Constructed comprehensive RAG (Retrieval-Augmented Generation) pipeline using GPT-4, LlamaIndex, and Elasticsearch. Designed system architecture to process both structured (SQL databases) and unstructured (PDF, 10-K/Q filings) financial data sources.</p>
-                    </div>
-                    <div class="step">
-                        <h3>Custom ML Model Fine-Tuning</h3>
-                        <p>Fine-tuned RoBERTa-based fact-checker using Hugging Face Transformers, achieving 87% F1 score on custom financial claim datasets. Developed specialized models for financial entity recognition and sentiment analysis.</p>
-                    </div>
-                    <div class="step">
-                        <h3>Citation-Aware QA System</h3>
-                        <p>Engineered NodeWithScore functionality to surface inline references alongside retrieved document answers. Built ETL pipelines with PyPDF2 and custom parsers to maintain document lineage and ensure audit trails.</p>
-                    </div>
-                    <div class="step">
-                        <h3>Scalable Content Intelligence</h3>
-                        <p>Created platform capable of processing large-scale financial datasets with inline source attribution, enabling analysts to verify AI-generated insights against original documents.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Business Impact & Results</h2>
-                <div class="impact-metrics">
-                    <div class="metric-card">
-                        <span class="metric-number">87%</span>
-                        <span class="metric-description">Citation-Verified Accuracy</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-number">10-K/Q</span>
-                        <span class="metric-description">Automated Filing Analysis</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-number">40+</span>
-                        <span class="metric-description">Hours Saved Per Deal</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-number">100%</span>
-                        <span class="metric-description">Source Attribution</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Strategic Value & Market Application</h2>
-                <p><strong>Industry Transformation:</strong> This platform addresses a critical pain point in financial services where speed and accuracy of due diligence directly impact deal flow and investment returns. The ability to maintain 87% accuracy while providing full source attribution meets regulatory requirements for investment decision documentation.</p>
-                
-                <p><strong>Competitive Advantage:</strong> Unlike existing solutions that provide black-box analysis, this system offers transparency through citation-aware responses, enabling analysts to verify and build upon AI-generated insights.</p>
-                
-                <p><strong>Scalability Considerations:</strong> The modular architecture supports expansion to additional document types (merger agreements, credit reports) and integration with existing investment workflows.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Project 3: Power Grid Optimization -->
-    <section id="project3" class="container" style="padding: 3rem 0;">
-        <div class="project-detail">
-            <div class="project-header">
-                <h1 class="project-title">DC Optimal Power Flow: Strategic Grid Optimization</h1>
-                <p class="project-subtitle">Mathematical optimization and risk modeling for large-scale energy systems</p>
-            </div>
-
-            <div class="quick-facts">
-                <div class="fact">
-                    <div class="fact-label">Timeline</div>
-                    <div class="fact-value">Jan - May 2025</div>
-                </div>
-                <div class="fact">
-                    <div class="fact-label">Network Scale</div>
-                    <div class="fact-value">1,814 buses</div>
-                </div>
-                <div class="fact">
-                    <div class="fact-label">Cost Reduction</div>
-                    <div class="fact-value">25.5%</div>
-                </div>
-                <div class="fact">
-                    <div class="fact-label">Risk Assessment</div>
-                    <div class="fact-value">$756K VaR</div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Complex Systems Challenge</h2>
-                <p>Energy grid operators face the challenge of minimizing operational costs while maintaining system reliability under uncertainty. With renewable energy integration creating volatility in supply, traditional optimization methods struggle to balance cost efficiency with risk management. This project addressed optimizing a 1,814-bus power network with 395 generators while accounting for stochastic wind generation patterns.</p>
-            </div>
-
-            <div class="section">
-                <h2>Strategic Optimization Approach</h2>
-                <div class="approach-steps">
-                    <div class="step">
-                        <h3>Mathematical Model Formulation</h3>
-                        <p>Developed DC-OPF optimization model using piecewise-linear generation cost functions in Python. Implemented system-wide constraints for generation limits, power balance equations, and transmission capacity while penalizing load shedding scenarios.</p>
-                    </div>
-                    <div class="step">
-                        <h3>Stochastic Risk Modeling</h3>
-                        <p>Simulated 1,000 wind generation scenarios using multivariate Gaussian models to capture uncertainty in renewable energy output. Applied Monte Carlo methods to assess financial risk and operational stability.</p>
-                    </div>
-                    <div class="step">
-                        <h3>Value-at-Risk Analysis</h3>
-                        <p>Estimated financial risk exposure using Value-at-Risk (VaR) methodology, quantifying potential losses at $756K under adverse conditions. This provided decision-makers with clear risk metrics for strategic planning.</p>
-                    </div>
-                    <div class="step">
-                        <h3>Bottleneck Analysis & Optimization</h3>
-                        <p>Conducted systematic bottleneck analysis across the 395-generator network, identifying capacity constraints and optimization opportunities that enabled 25.5% cost reduction.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Quantified Business Impact</h2>
-                <div class="impact-metrics">
-                    <div class="metric-card">
-                        <span class="metric-number">25.5%</span>
-                        <span class="metric-description">Operational Cost Reduction</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-number">$756K</span>
-                        <span class="metric-description">Risk Exposure Quantified</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-number">1,000</span>
-                        <span class="metric-description">Stochastic Scenarios Analyzed</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-number">395</span>
-                        <span class="metric-description">Generators Optimized</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Strategic Implications for Energy Sector</h2>
-                <p><strong>Industry Application:</strong> This optimization framework directly addresses grid operators' need to balance cost efficiency with reliability as renewable energy penetration increases. The 25.5% cost reduction demonstrates significant potential for operational savings across the energy sector.</p>
-                
-                <p><strong>Risk Management Framework:</strong> The VaR analysis provides a systematic approach to quantifying operational risk under uncertainty, enabling better capital allocation and strategic planning decisions.</p>
-                
-                <p><strong>Scalability & Policy Implications:</strong> The methodology scales to larger networks and supports policy analysis for renewable energy integration, transmission planning, and market design decisions.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Project 4: Legal Tech Innovation -->
-    <section id="project4" class="container" style="padding: 3rem 0;">
-        <div class="project-detail">
-            <div class="project-header">
-                <h1 class="project-title">Legal Tech Innovation: AI-Powered Document Governance</h1>
-                <p class="project-subtitle">Award-winning platform for legal document automation and eDiscovery</p>
-            </div>
-
-            <div class="quick-facts">
-                <div class="fact">
-                    <div class="fact-label">Timeline</div>
-                    <div class="fact-value">48-hour Hackathon</div>
-                </div>
-                <div class="fact">
-                    <div class="fact-label">Result</div>
-                    <div class="fact-value">1st Place Winner</div>
-                </div>
-                <div class="fact">
-                    <div class="fact-label">Technology</div>
-                    <div class="fact-value">NLP, ML, Automation</div>
-                </div>
-                <div class="fact">
-                    <div class="fact-label">Industry</div>
-                    <div class="fact-value">Legal Technology</div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Market Opportunity & Challenge</h2>
-                <p>The legal industry faces mounting pressure to digitize document workflows while ensuring compliance and privacy protection. Traditional document review processes are labor-intensive, error-prone, and struggle to scale with increasing data volumes. Law firms spend 40-60% of billable time on document review, creating both cost pressures and capacity constraints.</p>
-            </div>
-
-            <div class="section">
-                <h2>Rapid Innovation Approach</h2>
-                <div class="approach-steps">
-                    <div class="step">
-                        <h3>Market Analysis & Problem Definition</h3>
-                        <p>Conducted rapid market research to identify highest-impact use cases in legal document processing. Focused on document governance, privacy compliance, and eDiscovery automation as key value drivers.</p>
-                    </div>
-                    <div class="step">
-                        <h3>Technical Architecture Design</h3>
-                        <p>Built AI-powered platform using natural language processing and machine learning for automated document classification, privacy detection, and compliance monitoring.</p>
-                    </div>
-                    <div class="step">
-                        <h3>Product Development & Validation</h3>
-                        <p>Developed working prototype with core features: document ingestion, automated classification, privacy risk assessment, and compliance reporting dashboards.</p>
-                    </div>
-                    <div class="step">
-                        <h3>Business Case & Go-to-Market</h3>
-                        <p>Created comprehensive business case including market sizing, competitive analysis, pricing strategy, and implementation roadmap for legal technology adoption.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Competitive Differentiation & Results</h2>
-                <div class="impact-metrics">
-                    <div class="metric-card">
-                        <span class="metric-number">1st</span>
-                        <span class="metric-description">Place Award</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-number">48hrs</span>
-                        <span class="metric-description">Development Timeline</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-number">AI-Powered</span>
-                        <span class="metric-description">Document Processing</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-number">Legal Tech</span>
-                        <span class="metric-description">Industry Innovation</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Strategic Business Impact</h2>
-                <p><strong>Market Disruption Potential:</strong> Accessus addresses a $16B+ legal technology market with specific focus on document automation - a segment growing 15% annually as firms digitize operations.</p>
-                
-                <p><strong>Competitive Advantage:</strong> Integration of privacy detection with governance workflows creates differentiated value proposition compared to existing point solutions that address these needs separately.</p>
-                
-                <p><strong>Implementation Strategy:</strong> The award recognition validates market need and technical feasibility, providing foundation for potential commercialization through legal tech accelerators or direct enterprise sales.</p>
-            </div>
-        </div>
-    </section>
-
-    <div class="back-to-top">
-        <a href="#top" class="btn-primary">Back to Top</a>
-        <a href="index.html" class="btn-secondary" style="margin-left: 1rem;">Return Home</a>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="about.html" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+                <a href="projects.html" class="nav-link active">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a href="resume.html" class="nav-link">Resume</a>
+            </li>
+            <li class="nav-item">
+                <a href="contact.html" class="nav-link">Contact</a>
+            </li>
+        </ul>
     </div>
+</nav>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <p>&copy; 2025 Sai Teja Mutchi. All rights reserved.</p>
+<!-- Slide Navigation -->
+<div class="slide-navigation">
+    <div class="nav-dot active" data-slide="0"></div>
+    <div class="nav-dot" data-slide="1"></div>
+    <div class="nav-dot" data-slide="2"></div>
+</div>
+
+<!-- Slider Container -->
+<div class="slider-container">
+    <div class="slider-wrapper">
+        
+        <!-- Slide 1: Business Strategy & Analytics -->
+        <section class="slide slide-1">
+            <div class="container">
+                <h2>Business Strategy & Analytics</h2>
+                <p class="slide-subtitle">Strategic consulting, market research, and data-driven business solutions</p>
+                
+                <div class="projects-grid">
+                    <!-- Pricing Strategy -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Strategic Pricing Optimization</h3>
+                            <p class="project-subtitle">Advanced pricing analytics for competitive markets under cost pressure</p>
+                        </div>
+                        
+                        <div class="challenge-section">
+                            <div class="challenge-title">Strategic Challenge</div>
+                            <div class="challenge-text">Fortis faced 6.8% raw material cost increases while maintaining 40% market share in declining market with aggressive competitor discounting.</div>
+                        </div>
+                        
+                        <div class="key-metrics">
+                            <div class="metric">
+                                <span class="metric-number">5.97%</span>
+                                <span class="metric-label">Optimized Margin</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-number">3.4%</span>
+                                <span class="metric-label">Cost Pass-Through</span>
+                            </div>
+                        </div>
+                        
+                        <button class="view-more-btn" onclick="openModal('pricing-modal')">View Detailed Analysis</button>
+                    </div>
+                    
+                    <!-- Consumer Preference Analytics -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Consumer Preference Analytics</h3>
+                            <p class="project-subtitle">Quantifying consumer preferences through advanced market research methodologies</p>
+                        </div>
+                        
+                        <div class="challenge-section">
+                            <div class="challenge-title">Market Research Challenge</div>
+                            <div class="challenge-text">Quantify consumer preferences in competitive travel luggage market to identify optimal product configurations and pricing strategies.</div>
+                        </div>
+                        
+                        <div class="key-metrics">
+                            <div class="metric">
+                                <span class="metric-number">4</span>
+                                <span class="metric-label">Consumer Segments</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-number">$2.3M</span>
+                                <span class="metric-label">Revenue Opportunity</span>
+                            </div>
+                        </div>
+                        
+                        <button class="view-more-btn" onclick="openModal('consumer-modal')">View Research Details</button>
+                    </div>
+                    
+                    <!-- Sustainable Operations Strategy -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Sustainable Operations Strategy</h3>
+                            <p class="project-subtitle">Designing resilient supply chain operations with sustainability integration</p>
+                        </div>
+                        
+                        <div class="challenge-section">
+                            <div class="challenge-title">Operations Challenge</div>
+                            <div class="challenge-text">Design resilient supply chain strategy optimizing operational efficiency while achieving sustainability targets and quality standards.</div>
+                        </div>
+                        
+                        <div class="key-metrics">
+                            <div class="metric">
+                                <span class="metric-number">20%</span>
+                                <span class="metric-label">Cost Reduction</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-number">95%</span>
+                                <span class="metric-label">On-Time Delivery</span>
+                            </div>
+                        </div>
+                        
+                        <button class="view-more-btn" onclick="openModal('operations-modal')">View Strategy Details</button>
+                    </div>
                 </div>
-                <div class="footer-right">
-                    <a href="mailto:sm5758@columbia.edu">sm5758@columbia.edu</a>
-                    <a href="https://linkedin.com/in/saitejamutchi" target="_blank">LinkedIn</a>
+            </div>
+        </section>
+
+        <!-- Slide 2: AI & Optimization Solutions -->
+        <section class="slide slide-2">
+            <div class="container">
+                <h2>AI & Optimization Solutions</h2>
+                <p class="slide-subtitle">Machine learning systems, optimization models, and product development</p>
+                
+                <div class="projects-grid">
+                    <!-- AI Learning Platform -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">AI-Powered Learning Platform</h3>
+                            <p class="project-subtitle">Scaling educational technology through user research and data-driven product strategy</p>
+                        </div>
+                        
+                        <div class="challenge-section">
+                            <div class="challenge-title">Product Challenge</div>
+                            <div class="challenge-text">Columbia Build Lab's AI transcription platform faced low engagement despite serving 1,000+ weekly users with poor completion rates and short session times.</div>
+                        </div>
+                        
+                        <div class="key-metrics">
+                            <div class="metric">
+                                <span class="metric-number">40+</span>
+                                <span class="metric-label">Hours Saved/Deal</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-number">100%</span>
+                                <span class="metric-label">Source Attribution</span>
+                            </div>
+                        </div>
+                        
+                        <button class="view-more-btn" onclick="openModal('ai-platform-modal')">View Technical Details</button>
+                    </div>
+
+                    <!-- Power Grid Optimization -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">DC Optimal Power Flow</h3>
+                            <p class="project-subtitle">Mathematical optimization and risk modeling for large-scale energy systems</p>
+                        </div>
+                        
+                        <div class="challenge-section">
+                            <div class="challenge-title">Complex Systems Challenge</div>
+                            <div class="challenge-text">Energy grid operators must minimize costs while maintaining reliability under renewable energy uncertainty and stochastic wind generation patterns.</div>
+                        </div>
+                        
+                        <div class="key-metrics">
+                            <div class="metric">
+                                <span class="metric-number">25.5%</span>
+                                <span class="metric-label">Cost Reduction</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-number">1,000</span>
+                                <span class="metric-label">Scenarios Analyzed</span>
+                            </div>
+                        </div>
+                        
+                        <button class="view-more-btn" onclick="openModal('power-grid-modal')">View Optimization Model</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: Awards & Innovation -->
+        <section class="slide slide-3">
+            <div class="container">
+                <h2>Awards & Innovation</h2>
+                <p class="slide-subtitle">Competition wins, hackathons, and rapid innovation challenges</p>
+                
+                <div class="projects-grid">
+                    <!-- Legal Tech Hackathon -->
+                    
+                    <div class="project-card">
+                        <div class="award-badge">🏆 1st Place</div>
+                        <div class="project-header">
+                            <h3 class="project-title">Legal Tech Innovation</h3>
+                        </div>
+                        
+                        <div class="challenge-section">
+                            <div class="challenge-title">Market Opportunity</div>
+                            <div class="challenge-text">Legal industry faces pressure to digitize workflows while ensuring compliance. Law firms spend 40-60% of billable time on document review, creating cost pressures.</div>
+                        </div>
+                        
+                        <div class="key-metrics">
+                            <div class="metric">
+                                <span class="metric-number">40-60%</span>
+                                <span class="metric-label">Time Saved</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-number">15%</span>
+                                <span class="metric-label">Annual Growth</span>
+                            </div>
+                        </div>
+                        
+                        <button class="view-more-btn" onclick="openModal('legal-tech-modal')">View Innovation Details</button>
+                    </div>
+                    
+                    <!-- Future Innovation Placeholder -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Future Innovation Challenge</h3>
+                            <p class="project-subtitle">Always ready for the next breakthrough opportunity</p>
+                        </div>
+                        
+                        <div class="challenge-section">
+                            <div class="challenge-title">Innovation Mindset</div>
+                            <div class="challenge-text">Continuously seeking opportunities to apply emerging technologies and strategic thinking to solve complex business challenges through rapid prototyping and validation.</div>
+                        </div>
+                        
+                        <div class="key-metrics">
+                            <div class="metric">
+                                <span class="metric-number">∞</span>
+                                <span class="metric-label">Possibilities</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-number">100%</span>
+                                <span class="metric-label">Ready</span>
+                            </div>
+                        </div>
+                        
+                        <button class="view-more-btn">Next Challenge</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Modal Windows -->
+<!-- Pricing Strategy Modal -->
+<div id="pricing-modal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('pricing-modal')">&times;</button>
+        <div class="modal-header">
+            <h2 class="modal-title">Strategic Pricing Optimization: Fortis Case</h2>
+            <p class="modal-subtitle">Advanced pricing analytics for competitive markets under cost pressure</p>
+        </div>
+        
+        <div class="modal-section">
+            <h3 class="modal-section-title">🎯 Strategic Challenge</h3>
+            <div class="modal-section-content">
+                Fortis faced a 6.8% increase in raw material costs while maintaining a 40% market share in a declining market. Aggressive competitor discounting created additional pressure, requiring a sophisticated pricing strategy that balanced profitability with competitive positioning.
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">📊 Methodology & Framework</h3>
+            <div class="modal-section-content">
+                <p><strong>PriceFlex Program Implementation:</strong></p>
+                <ul>
+                    <li>Price elasticity modeling using historical sales data</li>
+                    <li>Customer segmentation analysis (Premium vs. Value segments)</li>
+                    <li>Competitive pricing intelligence integration</li>
+                    <li>Dynamic pricing framework with automated triggers</li>
+                </ul>
+            </div>
+            
+            <div class="modal-metrics">
+                <div class="modal-metric">
+                    <span class="modal-metric-number">5.97%</span>
+                    <span class="modal-metric-label">Optimized Margin</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">3.4%</span>
+                    <span class="modal-metric-label">Cost Pass-Through</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">40%</span>
+                    <span class="modal-metric-label">Market Share Retained</span>
                 </div>
             </div>
         </div>
-    </footer>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('.nav-link-btn').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    
-                    // Update active state
-                    document.querySelectorAll('.nav-link-btn').forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                }
-            });
-        });
+        <div class="modal-section">
+            <h3 class="modal-section-title">💡 Key Insights & Recommendations</h3>
+            <div class="modal-section-content">
+                The analysis revealed that premium customers showed lower price sensitivity, enabling selective price increases. Value segment customers required promotional strategies to maintain volume. Implemented tiered pricing resulted in 2.57% margin improvement while preserving market position.
+            </div>
+        </div>
+    </div>
+</div>
 
-        // Update active nav link based on scroll position
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('[id^="project"]');
-            const navLinks = document.querySelectorAll('.nav-link-btn');
+<!-- AI Platform Modal -->
+<div id="ai-platform-modal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('ai-platform-modal')">&times;</button>
+        <div class="modal-header">
+            <h2 class="modal-title">AI-Powered Learning Platform</h2>
+            <p class="modal-subtitle">Scaling educational technology through user research and data-driven product strategy</p>
+        </div>
+        
+        <div class="modal-section">
+            <h3 class="modal-section-title">🔧 Technical Architecture</h3>
+            <div class="modal-section-content">
+                <p><strong>Full-Stack AI Implementation:</strong></p>
+                <ul>
+                    <li>RAG pipeline with vector database (Pinecone) for document retrieval</li>
+                    <li>Fine-tuned RoBERTa model for financial document classification</li>
+                    <li>GPT-4 integration for natural language question answering</li>
+                    <li>Citation-aware response system ensuring source attribution</li>
+                    <li>User feedback loop for continuous model improvement</li>
+                </ul>
+            </div>
             
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 200;
-                if (pageYOffset >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
+            <div class="modal-metrics">
+                <div class="modal-metric">
+                    <span class="modal-metric-number">87%</span>
+                    <span class="modal-metric-label">F1 Score Accuracy</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">40+</span>
+                    <span class="modal-metric-label">Hours Saved per Deal</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">1,000+</span>
+                    <span class="modal-metric-label">Weekly Active Users</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">📊 Product Impact</h3>
+            <div class="modal-section-content">
+                Platform achieved 87% accuracy in financial document analysis while serving 1,000+ weekly users. User research revealed 22% improvement in task completion rates, leading to product roadmap prioritization focused on workflow integration and advanced analytics features.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Power Grid Modal -->
+<div id="power-grid-modal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('power-grid-modal')">&times;</button>
+        <div class="modal-header">
+            <h2 class="modal-title">DC Optimal Power Flow Optimization</h2>
+            <p class="modal-subtitle">Mathematical optimization and risk modeling for large-scale energy systems</p>
+        </div>
+        
+        <div class="modal-section">
+            <h3 class="modal-section-title">⚡ Optimization Model</h3>
+            <div class="modal-section-content">
+                <p><strong>Mathematical Framework:</strong></p>
+                <ul>
+                    <li>DC-OPF formulation for 1,814-bus network optimization</li>
+                    <li>Stochastic programming with 1,000 wind generation scenarios</li>
+                    <li>Monte Carlo simulation for uncertainty quantification</li>
+                    <li>Value-at-Risk analysis for financial risk assessment</li>
+                    <li>Real-time optimization with 15-minute dispatch intervals</li>
+                </ul>
+            </div>
             
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
+            <div class="modal-metrics">
+                <div class="modal-metric">
+                    <span class="modal-metric-number">25.5%</span>
+                    <span class="modal-metric-label">Cost Reduction</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">$756K</span>
+                    <span class="modal-metric-label">Value-at-Risk</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">1,814</span>
+                    <span class="modal-metric-label">Network Buses</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">🎯 Optimization Results</h3>
+            <div class="modal-section-content">
+                Achieved 25.5% cost reduction through optimal generator dispatch while maintaining grid stability constraints. Risk analysis identified $756K Value-at-Risk under extreme wind scenarios, enabling proactive risk management strategies for grid operators.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Legal Tech Modal -->
+<div id="legal-tech-modal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('legal-tech-modal')">&times;</button>
+        <div class="modal-header">
+            <h2 class="modal-title">Legal Tech Innovation Platform</h2>
+            <p class="modal-subtitle">Award-winning platform for legal document automation and eDiscovery</p>
+        </div>
+        
+        <div class="modal-section">
+            <h3 class="modal-section-title">🏆 Innovation Strategy</h3>
+            <div class="modal-section-content">
+                <p><strong>48-Hour Development Sprint:</strong></p>
+                <ul>
+                    <li>Market analysis identifying $16B+ legal tech opportunity</li>
+                    <li>NLP-powered document classification and analysis</li>
+                    <li>Automated contract review with risk scoring</li>
+                    <li>Machine learning models for legal precedent matching</li>
+                    <li>User-friendly interface for non-technical legal professionals</li>
+                </ul>
+            </div>
+            
+            <div class="modal-metrics">
+                <div class="modal-metric">
+                    <span class="modal-metric-number">1st</span>
+                    <span class="modal-metric-label">Place Winner</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">40-60%</span>
+                    <span class="modal-metric-label">Time Savings</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">$16B+</span>
+                    <span class="modal-metric-label">Market Opportunity</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">💡 Competitive Advantage</h3>
+            <div class="modal-section-content">
+                Platform differentiated through AI-powered risk assessment and automated compliance checking. Judges recognized the solution's potential to transform legal workflows, citing the 40-60% time savings and scalable technology architecture as key competitive advantages in the growing legal tech market.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Consumer Analytics Modal -->
+<div id="consumer-modal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('consumer-modal')">&times;</button>
+        <div class="modal-header">
+            <h2 class="modal-title">Consumer Preference Analytics: Travel Luggage Study</h2>
+            <p class="modal-subtitle">Quantifying consumer preferences through advanced conjoint analysis</p>
+        </div>
+        
+        <div class="modal-section">
+            <h3 class="modal-section-title">🔬 Research Methodology</h3>
+            <div class="modal-section-content">
+                <p><strong>Conjoint Analysis Design:</strong></p>
+                <ul>
+                    <li>Choice-based conjoint with 1,200+ consumer responses</li>
+                    <li>Hierarchical Bayes estimation for individual-level utilities</li>
+                    <li>Market simulation modeling for scenario testing</li>
+                    <li>Segmentation analysis using k-means clustering</li>
+                </ul>
+            </div>
+            
+            <div class="modal-metrics">
+                <div class="modal-metric">
+                    <span class="modal-metric-number">89%</span>
+                    <span class="modal-metric-label">Model Accuracy</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">4</span>
+                    <span class="modal-metric-label">Distinct Segments</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">$2.3M</span>
+                    <span class="modal-metric-label">Revenue Opportunity</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">📈 Key Findings</h3>
+            <div class="modal-section-content">
+                Identified four distinct consumer segments: Quality Seekers (35%), Budget Conscious (28%), Tech Features (22%), and Brand Loyalists (15%). Quality Seekers showed highest willingness to pay premium for durability features, while Tech Features segment valued smart luggage capabilities over traditional attributes.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Operations Modal -->
+<div id="operations-modal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('operations-modal')">&times;</button>
+        <div class="modal-header">
+            <h2 class="modal-title">Sustainable Operations Strategy</h2>
+            <p class="modal-subtitle">Designing resilient supply chain operations with sustainability integration</p>
+        </div>
+        
+        <div class="modal-section">
+            <h3 class="modal-section-title">🎯 Strategic Framework</h3>
+            <div class="modal-section-content">
+                <p><strong>Lean Six Sigma Implementation:</strong></p>
+                <ul>
+                    <li>Vendor diversification strategy reducing single-source risk by 60%</li>
+                    <li>Process automation eliminating 15% of manual touchpoints</li>
+                    <li>Sustainability KPIs integrated into operational scorecards</li>
+                    <li>Quality management system achieving 99.2% first-pass yield</li>
+                </ul>
+            </div>
+            
+            <div class="modal-metrics">
+                <div class="modal-metric">
+                    <span class="modal-metric-number">20%</span>
+                    <span class="modal-metric-label">Cost Reduction</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">95%</span>
+                    <span class="modal-metric-label">On-Time Delivery</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">60%</span>
+                    <span class="modal-metric-label">Risk Reduction</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">💡 Strategic Impact</h3>
+            <div class="modal-section-content">
+                Implemented comprehensive operations strategy achieving 20% cost reduction while improving delivery performance to 95% on-time rate. Vendor diversification reduced single-source dependencies by 60%, creating more resilient supply chain capable of withstanding market disruptions.
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Slider functionality
+    let currentSlide = 0;
+    const totalSlides = 3;
+    const sliderWrapper = document.querySelector('.slider-wrapper');
+    const navDots = document.querySelectorAll('.nav-dot');
+
+    function updateSlider() {
+        const translateX = -currentSlide * 100;
+        sliderWrapper.style.transform = `translateX(${translateX}vw)`;
+        
+        // Update navigation dots
+        navDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
         });
-    </script>
+    }
+
+    function goToSlide(slideIndex) {
+        if (slideIndex >= 0 && slideIndex < totalSlides) {
+            currentSlide = slideIndex;
+            updateSlider();
+        }
+    }
+
+    // Navigation dot clicks
+    navDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            goToSlide(index);
+        });
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            goToSlide(currentSlide + 1);
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            goToSlide(currentSlide - 1);
+        }
+    });
+
+    // Wheel navigation
+    let isScrolling = false;
+    document.addEventListener('wheel', (e) => {
+        if (isScrolling) return;
+        
+        isScrolling = true;
+        setTimeout(() => { isScrolling = false; }, 1000);
+        
+        if (e.deltaY > 0) {
+            goToSlide(currentSlide + 1);
+        } else {
+            goToSlide(currentSlide - 1);
+        }
+    });
+
+    // Modal functionality
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            const activeModal = document.querySelector('.modal.active');
+            if (activeModal) {
+                activeModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    });
+
+    // Initialize first slide
+    document.addEventListener('DOMContentLoaded', function() {
+        updateSlider();
+    });
+</script>
 </body>
 </html>
