@@ -4,8 +4,376 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sai Teja Mutchi - Product Strategy & Analytics</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Navigation - Exact match */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: #2563eb;
+            background: #8bb5eb;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: #2668d2;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        /* Slider Container */
+        .slider-container {
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            height: 100vh;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        /* Slide Navigation Dots */
+        .slide-navigation {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-dot.active {
+            background: #3b82f6;
+            border-color: #3b82f6;
+            transform: scale(1.2);
+        }
+
+        .nav-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* Slide 1: Hero */
+        .slide-1 {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.2;
+        }
+
+        .highlight {
+            color: #3498db;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #ecf0f1;
+            line-height: 1.8;
+        }
+
+        .key-metrics {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .metric {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .metric-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #3498db;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #ecf0f1;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Slide 2: What I Do */
+        .slide-2 {
+            background: #ecf0f1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .slide-2 h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: #3498db;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .service-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Slide 3: Beyond Work */
+        .slide-3 {
+            background: #34495e;
+            color: white;
+        }
+
+        .beyond-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .beyond-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .beyond-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .beyond-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .beyond-content {
+            padding: 2rem;
+        }
+
+        .beyond-content h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .beyond-content p {
+            color: #ecf0f1;
+            line-height: 1.6;
+        }
+        .slide-3 h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ecf0f1;;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+       
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -16,7 +384,7 @@
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="index.html" class="nav-link active">Home</a>
                 </li>
                 <li class="nav-item">
                     <a href="about.html" class="nav-link">About</a>
@@ -39,141 +407,194 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Product Strategy & <span class="highlight">Analytics Leader</span></h1>
-                    <p class="hero-subtitle">Bridging technical depth with business strategy to solve complex problems. Currently MS Business Analytics @ Columbia, with 3+ years building scalable solutions.</p>
+    <!-- Slide Navigation -->
+    <div class="slide-navigation">
+        <div class="nav-dot active" data-slide="0"></div>
+        <div class="nav-dot" data-slide="1"></div>
+        <div class="nav-dot" data-slide="2"></div>
+    </div>
+
+    <!-- Slider Container -->
+    <div class="slider-container">
+        <div class="slider-wrapper">
+            <!-- Slide 1: Hero -->
+            <section class="slide slide-1">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Product Strategy & <span class="highlight">Analytics Specialist</span></h1>
+                        <p class="hero-subtitle">Bridging technical depth with business strategy to solve complex problems. Currently MS Business Analytics @ Columbia Business School, with 3+ years building scalable solutions.</p>
+                        
+                        <div class="key-metrics">
+                            <div class="metric">
+                                <span class="metric-number">22%</span>
+                                <span class="metric-label">Engagement Improvement</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-number">1,000+</span>
+                                <span class="metric-label">Users Served</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-number">25.5%</span>
+                                <span class="metric-label">Cost Reduction</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-buttons">
+                            <a href="projects.html" class="btn-primary">View My Work</a>
+                            <a href="contact.html" class="btn-secondary">Get In Touch</a>
+                        </div>
+                    </div>
                     
-                    <div class="key-metrics">
-                        <div class="metric">
-                            <span class="metric-number">22%</span>
-                            <span class="metric-label">Engagement Improvement</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-number">1,000+</span>
-                            <span class="metric-label">Users Served</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-number">25.5%</span>
-                            <span class="metric-label">Cost Reduction</span>
-                        </div>
+                    <div class="hero-image">
+                        <img src="images/profile.jpg" alt="Sai Teja Mutchi" class="profile-img">
                     </div>
+                </div>
+            </section>
 
-                    <div class="hero-buttons">
-                        <a href="projects.html" class="btn-primary">View My Work</a>
-                        <a href="contact.html" class="btn-secondary">Get In Touch</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="images/profile.jpg" alt="Sai Teja Mutchi" class="profile-img">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- What I Do Section -->
-    <section class="what-i-do">
-        <div class="container">
-            <h2>What I Do</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🚀</div>
-                    <h3>Product Management</h3>
-                    <p>User-centered platform development with data-driven optimization. Led AI-powered transcription platform serving 1,000+ weekly users.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>Strategic Analytics</h3>
-                    <p>Business optimization through quantitative analysis. Applied statistical modeling and optimization to achieve 25.5% cost reductions.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🤖</div>
-                    <h3>AI Implementation</h3>
-                    <p>End-to-end ML product development. Built RAG pipelines and automated systems with 87% accuracy for financial analysis.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Projects -->
-    <section class="featured-projects">
-        <div class="container">
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card featured">
-                    <div class="project-image">
-                        <img src="images/project1.png" alt="Columbia Build Lab Platform">
-                    </div>
-                    <div class="project-content">
-                        <span class="project-tag">Product Management</span>
-                        <h3>AI-Powered Learning Platform</h3>
-                        <p>Led end-to-end product strategy for transcription platform, achieving 22% engagement improvement through user research and A/B testing.</p>
-                        <div class="project-metrics">
-                            <span>22% engagement ↗</span>
-                            <span>1,000+ users</span>
-                            <span>2 sprints saved</span>
+            <!-- Slide 2: What I Do -->
+            <section class="slide slide-2">
+                <div class="container">
+                    <h2>What I Do</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <circle cx="12" cy="12" r="6"/>
+                                    <circle cx="12" cy="12" r="2"/>
+                                </svg>
+                            </div>
+                            <h3>Product Management</h3>
+                            <p>User-centered platform development with data-driven optimization. Led AI-powered transcription platform serving 1,000+ weekly users.</p>
                         </div>
-                        <a href="projects.html#project1" class="project-link">View Case Study →</a>
-                    </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/project2.png" alt="Investment Intelligence">
-                    </div>
-                    <div class="project-content">
-                        <span class="project-tag">AI Strategy</span>
-                        <h3>Investment Intelligence Platform</h3>
-                        <p>Built end-to-end RAG pipeline for automated financial due diligence using GPT-4 and custom ML models.</p>
-                        <div class="project-metrics">
-                            <span>87% accuracy</span>
-                            <span>Automated insights</span>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="18" y1="20" x2="18" y2="10"/>
+                                    <line x1="12" y1="20" x2="12" y2="4"/>
+                                    <line x1="6" y1="20" x2="6" y2="14"/>
+                                </svg>
+                            </div>
+                            <h3>Strategic Analytics</h3>
+                            <p>Business optimization through quantitative analysis. Applied statistical modeling and optimization to achieve 25.5% cost reductions.</p>
                         </div>
-                        <a href="projects.html#project2" class="project-link">View Case Study →</a>
-                    </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/project3.png" alt="Power Grid Optimization">
-                    </div>
-                    <div class="project-content">
-                        <span class="project-tag">Strategic Analytics</span>
-                        <h3>Power Grid Optimization</h3>
-                        <p>Applied mathematical optimization to minimize costs while managing uncertainty in 1,814-bus network.</p>
-                        <div class="project-metrics">
-                            <span>25.5% cost reduction</span>
-                            <span>$756K risk assessed</span>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M15 9a3 3 0 1 0-6 0v6a3 3 0 1 0 6 0V9z" />
+                                    <line x1="9" y1="9" x2="7" y2="7"/>
+                                    <line x1="15" y1="9" x2="17" y2="7"/>
+                                    <line x1="15" y1="15" x2="17" y2="17"/>
+                                    <line x1="9" y1="15" x2="7" y2="17"/>
+                                </svg>
+                            </div>
+                            <h3>AI Implementation</h3>
+                            <p>End-to-end ML product development. Built RAG pipelines and automated systems with 87% accuracy for financial analysis.</p>
                         </div>
-                        <a href="projects.html#project3" class="project-link">View Case Study →</a>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- Slide 3: Beyond Work -->
+            <section class="slide slide-3">
+                <div class="container">
+                    <h2>Beyond Work</h2>
+                    <div class="beyond-grid">
+                        <div class="beyond-card">
+                            <div class="beyond-image">
+                                <img src="images/Tennis.jpg" alt="Tennis Trophy">
+                            </div>
+                            <div class="beyond-content">
+                                <h3>Tennis Enthusiast</h3>
+                                <p>Staying active through tennis and sports helps me recharge, stay disciplined, and bring energy into everything I do.</p>
+                            </div>
+                            
+                        </div>
+
+                        <div class="beyond-card">
+                            <div class="beyond-image">
+                                <img src="images/Columbia.png" alt="Clubs & Activities">
+                            </div>
+                            <div class="beyond-content">
+                                <h3>Campus Involvement</h3>
+                                <p>Outside the classroom, I engage in hackathons, campus events, and leadership workshops that spark creativity and connection.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+    <script>
+        // Slider functionality
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const sliderWrapper = document.querySelector('.slider-wrapper');
+        const navDots = document.querySelectorAll('.nav-dot');
+
+        function updateSlider() {
+            const translateX = -currentSlide * 100;
+            sliderWrapper.style.transform = `translateX(${translateX}vw)`;
             
-            <div class="view-all-projects">
-                <a href="projects.html" class="btn-primary">View All Projects</a>
-            </div>
-        </div>
-    </section>
+            // Update navigation dots
+            navDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <p>&copy; 2025 Sai Teja Mutchi. All rights reserved.</p>
-                </div>
-                <div class="footer-right">
-                    <a href="mailto:sm5758@columbia.edu">sm5758@columbia.edu</a>
-                    <a href="https://linkedin.com/in/saitejamutchi" target="_blank">LinkedIn</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+        function goToSlide(slideIndex) {
+            if (slideIndex >= 0 && slideIndex < totalSlides) {
+                currentSlide = slideIndex;
+                updateSlider();
+            }
+        }
 
-    <script src="js/script.js"></script>
+        // Navigation dot clicks
+        navDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                goToSlide(currentSlide + 1);
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                goToSlide(currentSlide - 1);
+            }
+        });
+
+        // Wheel navigation
+        let isScrolling = false;
+        document.addEventListener('wheel', (e) => {
+            if (isScrolling) return;
+            
+            isScrolling = true;
+            setTimeout(() => { isScrolling = false; }, 1000);
+            
+            if (e.deltaY > 0) {
+                goToSlide(currentSlide + 1);
+            } else {
+                goToSlide(currentSlide - 1);
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Initialize first slide
+        document.addEventListener('DOMContentLoaded', function() {
+            updateSlider();
+        });
+    </script>
 </body>
 </html>
