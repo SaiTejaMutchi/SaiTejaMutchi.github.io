@@ -196,7 +196,6 @@
             min-height: 420px;
         }
 
-
         .project-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
@@ -462,6 +461,11 @@
             margin-top: 0.5rem;
         }
 
+        .modal-section-content strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
         .modal-metrics {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -628,31 +632,32 @@
                         <button class="view-more-btn" onclick="openModal('consumer-modal')">View Research Details</button>
                     </div>
                     
-                    <!-- Sustainable Operations Strategy -->
+                    <!-- Hotel Sustainability Management -->
                     <div class="project-card">
                         <div class="project-header">
-                            <h3 class="project-title">Sustainable Operations Strategy</h3>
-                            <p class="project-subtitle">Designing resilient supply chain operations with sustainability integration</p>
+                            <h3 class="project-title">Hotel Sustainability Management</h3>
+                            <p class="project-subtitle">Strategic emissions reduction in 500-room NYC hotel through technical upgrades and operational excellence</p>
                         </div>
                         
                         <div class="challenge-section">
-                            <div class="challenge-title">Operations Challenge</div>
-                            <div class="challenge-text">Design resilient supply chain strategy optimizing operational efficiency while achieving sustainability targets and quality standards.</div>
+                            <div class="challenge-title">Sustainability Challenge</div>
+                            <div class="challenge-text">Achieve 50% emissions reduction while maintaining 4-star service standards and maximizing financial performance through strategic energy, procurement, and behavioral initiatives.</div>
                         </div>
                         
                         <div class="key-metrics">
                             <div class="metric">
-                                <span class="metric-number">20%</span>
-                                <span class="metric-label">Cost Reduction</span>
+                                <span class="metric-number">46.8%</span>
+                                <span class="metric-label">CO2e Reduction</span>
                             </div>
                             <div class="metric">
-                                <span class="metric-number">95%</span>
-                                <span class="metric-label">On-Time Delivery</span>
+                                <span class="metric-number">10.2%</span>
+                                <span class="metric-label">Profit Growth</span>
                             </div>
                         </div>
                         
-                        <button class="view-more-btn" onclick="openModal('operations-modal')">View Strategy Details</button>
+                        <button class="view-more-btn" onclick="openModal('sustainability-modal')">View Strategy Details</button>
                     </div>
+                
                 </div>
             </div>
         </section>
@@ -664,37 +669,63 @@
                 <p class="slide-subtitle">Machine learning systems, optimization models, and product development</p>
                 
                 <div class="projects-grid">
-                    <!-- AI Learning Platform -->
+                    <!-- AI Transcription Platform - PM Internship -->
                     <div class="project-card">
                         <div class="project-header">
-                            <h3 class="project-title">AI-Powered Learning Platform</h3>
-                            <p class="project-subtitle">Scaling educational technology through user research and data-driven product strategy</p>
+                            <h3 class="project-title">AI-Powered Transcription Platform</h3>
+                            <p class="project-subtitle">Product strategy and user research for educational technology serving 1,000+ weekly active users</p>
                         </div>
                         
                         <div class="challenge-section">
                             <div class="challenge-title">Product Challenge</div>
-                            <div class="challenge-text">Columbia Build Lab's AI transcription platform faced low engagement despite serving 1,000+ weekly users with poor completion rates and short session times.</div>
+                            <div class="challenge-text">Columbia Build Lab's AI transcription platform faced low engagement despite serving 1,000+ weekly users, requiring comprehensive user research and strategic roadmap development.</div>
                         </div>
                         
                         <div class="key-metrics">
                             <div class="metric">
-                                <span class="metric-number">40+</span>
-                                <span class="metric-label">Hours Saved/Deal</span>
+                                <span class="metric-number">22%</span>
+                                <span class="metric-label">Engagement Boost</span>
                             </div>
                             <div class="metric">
-                                <span class="metric-number">100%</span>
-                                <span class="metric-label">Source Attribution</span>
+                                <span class="metric-number">15+</span>
+                                <span class="metric-label">User Interviews</span>
                             </div>
                         </div>
                         
-                        <button class="view-more-btn" onclick="openModal('ai-platform-modal')">View Technical Details</button>
+                        <button class="view-more-btn" onclick="openModal('ai-platform-modal')">View Strategy Details</button>
+                    </div>
+
+                    <!-- AI Investment Intelligence - Capstone -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">AI Investment Intelligence Platform</h3>
+                            <p class="project-subtitle">Citation-aware AI system for automated financial content analysis using GPT-4 and RAG pipeline</p>
+                        </div>
+                        
+                        <div class="challenge-section">
+                            <div class="challenge-title">AI Challenge</div>
+                            <div class="challenge-text">Financial analysts need automated 10-K/Q filing analysis while maintaining citation accuracy and regulatory compliance for investment decision-making.</div>
+                        </div>
+                        
+                        <div class="key-metrics">
+                            <div class="metric">
+                                <span class="metric-number">77%</span>
+                                <span class="metric-label">Citation Accuracy</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-number">10K+</span>
+                                <span class="metric-label">Documents Processed</span>
+                            </div>
+                        </div>
+                        
+                        <button class="view-more-btn" onclick="openModal('ai-investment-modal')">View Technical Details</button>
                     </div>
 
                     <!-- Power Grid Optimization -->
                     <div class="project-card">
                         <div class="project-header">
                             <h3 class="project-title">DC Optimal Power Flow</h3>
-                            <p class="project-subtitle">Mathematical optimization and risk modeling for large-scale energy systems</p>
+                            <p class="project-subtitle">Mathematical optimization and risk modeling for large-scale energy systems under renewable uncertainty</p>
                         </div>
                         
                         <div class="challenge-section">
@@ -727,11 +758,11 @@
                 
                 <div class="projects-grid">
                     <!-- Legal Tech Hackathon -->
-                    
                     <div class="project-card">
                         <div class="award-badge">🏆 1st Place</div>
                         <div class="project-header">
                             <h3 class="project-title">Legal Tech Innovation</h3>
+                            <p class="project-subtitle">Award-winning platform for legal document automation and eDiscovery</p>
                         </div>
                         
                         <div class="challenge-section">
@@ -745,38 +776,38 @@
                                 <span class="metric-label">Time Saved</span>
                             </div>
                             <div class="metric">
-                                <span class="metric-number">15%</span>
-                                <span class="metric-label">Annual Growth</span>
+                                <span class="metric-number">$16B+</span>
+                                <span class="metric-label">Market Opportunity</span>
                             </div>
                         </div>
                         
                         <button class="view-more-btn" onclick="openModal('legal-tech-modal')">View Innovation Details</button>
                     </div>
                     
-                    <!-- Future Innovation Placeholder -->
+                    <!-- AI Teaching Assistant Research -->
                     <div class="project-card">
                         <div class="project-header">
-                            <h3 class="project-title">Future Innovation Challenge</h3>
-                            <p class="project-subtitle">Always ready for the next breakthrough opportunity</p>
+                            <h3 class="project-title">AI Teaching Assistant Research</h3>
+                            <p class="project-subtitle">Multi-source analysis of student engagement with AI teaching assistants in graduate education</p>
                         </div>
                         
                         <div class="challenge-section">
-                            <div class="challenge-title">Innovation Mindset</div>
-                            <div class="challenge-text">Continuously seeking opportunities to apply emerging technologies and strategic thinking to solve complex business challenges through rapid prototyping and validation.</div>
+                            <div class="challenge-title">Research Challenge</div>
+                            <div class="challenge-text">Understanding how students interact with AI teaching assistants and measuring engagement patterns to optimize educational outcomes in small graduate course settings.</div>
                         </div>
                         
                         <div class="key-metrics">
                             <div class="metric">
-                                <span class="metric-number">∞</span>
-                                <span class="metric-label">Possibilities</span>
+                                <span class="metric-number">Multi-Source</span>
+                                <span class="metric-label">Data Analysis</span>
                             </div>
                             <div class="metric">
-                                <span class="metric-number">100%</span>
-                                <span class="metric-label">Ready</span>
+                                <span class="metric-number">2025</span>
+                                <span class="metric-label">Publication Target</span>
                             </div>
                         </div>
                         
-                        <button class="view-more-btn">Next Challenge</button>
+                        <button class="view-more-btn" onclick="openModal('ai-research-modal')">View Research Details</button>
                     </div>
                 </div>
             </div>
@@ -785,6 +816,7 @@
 </div>
 
 <!-- Modal Windows -->
+
 <!-- Pricing Strategy Modal -->
 <div id="pricing-modal" class="modal">
     <div class="modal-content">
@@ -838,48 +870,222 @@
     </div>
 </div>
 
-<!-- AI Platform Modal -->
+<!-- AI-Powered Transcription Platform Modal -->
 <div id="ai-platform-modal" class="modal">
     <div class="modal-content">
         <button class="modal-close" onclick="closeModal('ai-platform-modal')">&times;</button>
         <div class="modal-header">
-            <h2 class="modal-title">AI-Powered Learning Platform</h2>
-            <p class="modal-subtitle">Scaling educational technology through user research and data-driven product strategy</p>
+            <h2 class="modal-title">AI-Powered Transcription Platform</h2>
+            <p class="modal-subtitle">Product strategy and user research for educational technology platform</p>
         </div>
         
         <div class="modal-section">
-            <h3 class="modal-section-title">🔧 Technical Architecture</h3>
+            <h3 class="modal-section-title">🎯 Product Challenge</h3>
             <div class="modal-section-content">
-                <p><strong>Full-Stack AI Implementation:</strong></p>
+                Columbia Build Lab's AI transcription platform served 1,000+ weekly active users but faced significant engagement challenges with poor completion rates and short session times. The platform needed comprehensive user research and strategic product roadmap development to improve user experience and retention.
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">🔍 Research & Strategy</h3>
+            <div class="modal-section-content">
+                <p><strong>User Research Framework:</strong></p>
                 <ul>
-                    <li>RAG pipeline with vector database (Pinecone) for document retrieval</li>
-                    <li>Fine-tuned RoBERTa model for financial document classification</li>
-                    <li>GPT-4 integration for natural language question answering</li>
-                    <li>Citation-aware response system ensuring source attribution</li>
-                    <li>User feedback loop for continuous model improvement</li>
+                    <li>Conducted 15+ structured user interviews across 3 customer segments</li>
+                    <li>Implemented A/B testing framework for feature validation</li>
+                    <li>Established product metrics infrastructure and analytics dashboards</li>
+                    <li>Created feedback loops to reduce development cycles by 2 sprints</li>
+                </ul>
+                
+                <p><strong>Technical Infrastructure:</strong></p>
+                <ul>
+                    <li>Collaborated with engineering team on scalable AWS cloud architecture</li>
+                    <li>Maintained 99.5% platform uptime during optimization period</li>
+                    <li>Integrated APIs and database queries for enhanced user analytics</li>
+                    <li>Implemented real-time user behavior tracking and analysis</li>
                 </ul>
             </div>
             
             <div class="modal-metrics">
                 <div class="modal-metric">
-                    <span class="modal-metric-number">87%</span>
-                    <span class="modal-metric-label">F1 Score Accuracy</span>
-                </div>
-                <div class="modal-metric">
-                    <span class="modal-metric-number">40+</span>
-                    <span class="modal-metric-label">Hours Saved per Deal</span>
+                    <span class="modal-metric-number">22%</span>
+                    <span class="modal-metric-label">Engagement Improvement</span>
                 </div>
                 <div class="modal-metric">
                     <span class="modal-metric-number">1,000+</span>
                     <span class="modal-metric-label">Weekly Active Users</span>
                 </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">99.5%</span>
+                    <span class="modal-metric-label">Platform Uptime</span>
+                </div>
             </div>
         </div>
 
         <div class="modal-section">
-            <h3 class="modal-section-title">📊 Product Impact</h3>
+            <h3 class="modal-section-title">📈 Results & Impact</h3>
             <div class="modal-section-content">
-                Platform achieved 87% accuracy in financial document analysis while serving 1,000+ weekly users. User research revealed 22% improvement in task completion rates, leading to product roadmap prioritization focused on workflow integration and advanced analytics features.
+                <p><strong>User Engagement:</strong> Achieved 22% improvement in user engagement through data-driven feature prioritization and user experience optimization based on behavioral insights from comprehensive user research.</p>
+                
+                <p><strong>Product Strategy:</strong> Defined product vision and roadmap across 3 distinct customer segments, translating user needs into actionable product requirements and development priorities.</p>
+                
+                <p><strong>Operational Excellence:</strong> Maintained high platform reliability with 99.5% uptime while implementing significant product improvements and feature releases throughout the optimization period.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AI-Powered Investment Intelligence Platform Modal -->
+<div id="ai-investment-modal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('ai-investment-modal')">&times;</button>
+        <div class="modal-header">
+            <h2 class="modal-title">AI-Powered Investment Intelligence Platform</h2>
+            <p class="modal-subtitle">Citation-aware financial content analysis system with automated insight generation</p>
+        </div>
+        
+        <div class="modal-section">
+            <h3 class="modal-section-title">🎯 Strategic Challenge</h3>
+            <div class="modal-section-content">
+                Financial analysts spend countless hours manually reviewing 10-K/Q filings and unstructured financial documents to extract insights for investment decisions. The challenge was to build an AI system that could automatically analyze financial content while maintaining citation accuracy and source attribution for regulatory compliance and trust.
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">🔧 Technical Architecture</h3>
+            <div class="modal-section-content">
+                <p><strong>End-to-End RAG Pipeline Implementation:</strong></p>
+                <ul>
+                    <li>GPT-4 integration for natural language financial document analysis</li>
+                    <li>LlamaIndex framework for intelligent document indexing and retrieval</li>
+                    <li>Elasticsearch for scalable search and content discovery</li>
+                    <li>Citation-aware response system ensuring inline source attribution</li>
+                    <li>Entity resolution capabilities for financial data normalization</li>
+                </ul>
+                
+                <p><strong>Data Processing Infrastructure:</strong></p>
+                <ul>
+                    <li>ETL pipelines processing both structured (SQL) and unstructured (PDF) data sources</li>
+                    <li>10-K/Q filing processing with automatic content classification</li>
+                    <li>Scalable content intelligence platform with real-time processing capabilities</li>
+                    <li>Advanced NLP for financial entity recognition and insight generation</li>
+                </ul>
+            </div>
+            
+            <div class="modal-metrics">
+                <div class="modal-metric">
+                    <span class="modal-metric-number">77%</span>
+                    <span class="modal-metric-label">Citation-Verified Accuracy</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">10K+</span>
+                    <span class="modal-metric-label">Documents Processed</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">3x</span>
+                    <span class="modal-metric-label">Analysis Speed Improvement</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">🧠 AI & Content Intelligence</h3>
+            <div class="modal-section-content">
+                <p><strong>Advanced NLP Capabilities:</strong></p>
+                <ul>
+                    <li>Financial entity recognition and resolution for companies, metrics, and KPIs</li>
+                    <li>Content classification algorithms for document sections and financial statements</li>
+                    <li>Automated insight generation with contextual financial analysis</li>
+                    <li>Multi-document synthesis for comprehensive investment research</li>
+                </ul>
+                
+                <p><strong>Quality Assurance Framework:</strong></p>
+                <ul>
+                    <li>Citation verification ensuring all insights are traceable to source documents</li>
+                    <li>Confidence scoring for AI-generated insights and recommendations</li>
+                    <li>Continuous learning from user feedback and model improvements</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">💡 Key Technical Innovations</h3>
+            <div class="modal-section-content">
+                <p><strong>Citation-Aware AI:</strong> Developed proprietary method for maintaining source attribution throughout the RAG pipeline, ensuring every insight can be traced back to specific document sections for regulatory compliance.</p>
+                
+                <p><strong>Financial Entity Resolution:</strong> Implemented sophisticated entity matching algorithms to handle variations in company names, ticker symbols, and financial metrics across different document sources.</p>
+                
+                <p><strong>Scalable Content Intelligence:</strong> Created modular architecture allowing for easy integration of new data sources and AI models, with containerized deployment enabling rapid scaling based on analysis demand.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sustainability Strategy Modal -->
+<div id="sustainability-modal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('sustainability-modal')">&times;</button>
+        <div class="modal-header">
+            <h2 class="modal-title">Hotel Sustainability Management: Net Zero Journey</h2>
+            <p class="modal-subtitle">Strategic emissions reduction in 500-room NYC hotel through integrated sustainability initiatives</p>
+        </div>
+        
+        <div class="modal-section">
+            <h3 class="modal-section-title">🎯 Strategic Challenge</h3>
+            <div class="modal-section-content">
+                As General Manager of a 500-room, 4-star hotel in New York City, the challenge was to reduce CO2e emissions by 50% over seven years while maximizing financial performance and maintaining premium service standards. This required balancing environmental impact with operational efficiency and guest satisfaction.
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">🔧 Technical Infrastructure Strategy</h3>
+            <div class="modal-section-content">
+                <p><strong>Phase 1 (Years 1-2): Foundation Building</strong></p>
+                <ul>
+                    <li>Rooftop solar panel installation - immediate utility cost reduction</li>
+                    <li>Complete LED lighting conversion - 44% electricity consumption decrease</li>
+                    <li>Smart climate control systems deployment</li>
+                </ul>
+                
+                <p><strong>Phase 2 (Years 3-4): System Optimization</strong></p>
+                <ul>
+                    <li>HVAC system upgrades with advanced efficiency controls</li>
+                    <li>Window insulation improvements for thermal performance</li>
+                    <li>Sustainability Officer hiring for strategic coordination</li>
+                </ul>
+                
+                <p><strong>Phase 3 (Years 5-7): Advanced Integration</strong></p>
+                <ul>
+                    <li>Revolving door installations to reduce energy loss</li>
+                    <li>Motion sensor lighting systems throughout facility</li>
+                    <li>Electric vehicle fleet transition and charging infrastructure</li>
+                </ul>
+            </div>
+            
+            <div class="modal-metrics">
+                <div class="modal-metric">
+                    <span class="modal-metric-number">46.8%</span>
+                    <span class="modal-metric-label">Total CO2e Reduction</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">44%</span>
+                    <span class="modal-metric-label">Electricity Savings</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">10.2%</span>
+                    <span class="modal-metric-label">Operating Profit Growth</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">💡 Key Insights & Strategic Outcomes</h3>
+            <div class="modal-section-content">
+                <p><strong>Technical vs. Behavioral Impact:</strong> Infrastructure investments delivered the most significant emissions reductions, while behavioral initiatives provided crucial cultural foundation and brand differentiation.</p>
+                
+                <p><strong>Financial Performance:</strong> Early high-ROI investments (LED, solar) created positive cash flow that funded subsequent initiatives. Strategic sequencing was critical to maintaining profitability.</p>
+                
+                <p><strong>Strategic Learning:</strong> Successful sustainability requires harmonizing infrastructure upgrades, behavioral culture change, sustainable procurement, and brand alignment for optimal environmental and financial results.</p>
             </div>
         </div>
     </div>
@@ -944,7 +1150,7 @@
         <div class="modal-section">
             <h3 class="modal-section-title">🏆 Innovation Strategy</h3>
             <div class="modal-section-content">
-                <p><strong>48-Hour Development Sprint:</strong></p>
+                <p><strong>12-Hour Development Sprint:</strong></p>
                 <ul>
                     <li>Market analysis identifying $16B+ legal tech opportunity</li>
                     <li>NLP-powered document classification and analysis</li>
@@ -979,7 +1185,92 @@
     </div>
 </div>
 
-<!-- Consumer Analytics Modal -->
+<!-- AI Teaching Assistant Research Modal -->
+<div id="ai-research-modal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('ai-research-modal')">&times;</button>
+        <div class="modal-header">
+            <h2 class="modal-title">From Logs to Learning: AI Teaching Assistant Research</h2>
+            <p class="modal-subtitle">Multi-source analysis of student engagement with AI teaching assistants in graduate education</p>
+        </div>
+        
+        <div class="modal-section">
+            <h3 class="modal-section-title">🎯 Research Objective</h3>
+            <div class="modal-section-content">
+                This ongoing research project at Columbia University investigates how students interact with AI teaching assistants in small graduate course settings. The study aims to understand engagement patterns, learning outcomes, and optimization strategies for AI-enhanced education through comprehensive multi-source data analysis.
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">🔬 Research Methodology</h3>
+            <div class="modal-section-content">
+                <p><strong>Multi-Source Data Collection:</strong></p>
+                <ul>
+                    <li>System interaction logs and user behavior analytics</li>
+                    <li>Student engagement surveys and feedback forms</li>
+                    <li>Academic performance metrics and learning outcomes</li>
+                    <li>Qualitative interviews with students and instructors</li>
+                    <li>Comparative analysis across different course structures</li>
+                </ul>
+                
+                <p><strong>Analytical Framework:</strong></p>
+                <ul>
+                    <li>Statistical analysis of engagement patterns and usage frequency</li>
+                    <li>Natural language processing of student-AI conversations</li>
+                    <li>Correlation analysis between AI usage and academic performance</li>
+                    <li>Thematic analysis of qualitative feedback and interviews</li>
+                </ul>
+            </div>
+            
+            <div class="modal-metrics">
+                <div class="modal-metric">
+                    <span class="modal-metric-number">Multi-Source</span>
+                    <span class="modal-metric-label">Data Integration</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">Graduate</span>
+                    <span class="modal-metric-label">Course Focus</span>
+                </div>
+                <div class="modal-metric">
+                    <span class="modal-metric-number">July 2025</span>
+                    <span class="modal-metric-label">Publication Target</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">📊 Research Areas & Expected Outcomes</h3>
+            <div class="modal-section-content">
+                <p><strong>Key Research Questions:</strong></p>
+                <ul>
+                    <li>How do student engagement patterns with AI teaching assistants vary across different learning contexts?</li>
+                    <li>What factors influence the effectiveness of AI teaching assistants in small graduate courses?</li>
+                    <li>How can AI teaching assistant systems be optimized to improve student learning outcomes?</li>
+                    <li>What are the implications for instructor roles and course design in AI-enhanced education?</li>
+                </ul>
+                
+                <p><strong>Expected Contributions:</strong></p>
+                <ul>
+                    <li>Framework for evaluating AI teaching assistant effectiveness in higher education</li>
+                    <li>Best practices for integrating AI teaching assistants in graduate-level courses</li>
+                    <li>Insights into student preferences and behavioral patterns with educational AI</li>
+                    <li>Recommendations for future AI teaching assistant system design and implementation</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">🚀 Academic Impact & Innovation</h3>
+            <div class="modal-section-content">
+                <p><strong>Research Innovation:</strong> This study represents a comprehensive approach to understanding AI in education, combining quantitative system analytics with qualitative educational research to provide holistic insights into AI teaching assistant effectiveness.</p>
+                
+                <p><strong>Academic Contribution:</strong> The research addresses a critical gap in understanding how AI teaching assistants can be optimally deployed in small, intensive graduate course environments, with findings applicable to broader educational technology implementations.</p>
+                
+                <p><strong>Future Applications:</strong> Results will inform the development of next-generation AI teaching systems, educational policy recommendations, and best practices for AI integration in higher education curricula.</p>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="consumer-modal" class="modal">
     <div class="modal-content">
         <button class="modal-close" onclick="closeModal('consumer-modal')">&times;</button>
@@ -1020,52 +1311,6 @@
             <h3 class="modal-section-title">📈 Key Findings</h3>
             <div class="modal-section-content">
                 Identified four distinct consumer segments: Quality Seekers (35%), Budget Conscious (28%), Tech Features (22%), and Brand Loyalists (15%). Quality Seekers showed highest willingness to pay premium for durability features, while Tech Features segment valued smart luggage capabilities over traditional attributes.
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Operations Modal -->
-<div id="operations-modal" class="modal">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeModal('operations-modal')">&times;</button>
-        <div class="modal-header">
-            <h2 class="modal-title">Sustainable Operations Strategy</h2>
-            <p class="modal-subtitle">Designing resilient supply chain operations with sustainability integration</p>
-        </div>
-        
-        <div class="modal-section">
-            <h3 class="modal-section-title">🎯 Strategic Framework</h3>
-            <div class="modal-section-content">
-                <p><strong>Lean Six Sigma Implementation:</strong></p>
-                <ul>
-                    <li>Vendor diversification strategy reducing single-source risk by 60%</li>
-                    <li>Process automation eliminating 15% of manual touchpoints</li>
-                    <li>Sustainability KPIs integrated into operational scorecards</li>
-                    <li>Quality management system achieving 99.2% first-pass yield</li>
-                </ul>
-            </div>
-            
-            <div class="modal-metrics">
-                <div class="modal-metric">
-                    <span class="modal-metric-number">20%</span>
-                    <span class="modal-metric-label">Cost Reduction</span>
-                </div>
-                <div class="modal-metric">
-                    <span class="modal-metric-number">95%</span>
-                    <span class="modal-metric-label">On-Time Delivery</span>
-                </div>
-                <div class="modal-metric">
-                    <span class="modal-metric-number">60%</span>
-                    <span class="modal-metric-label">Risk Reduction</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal-section">
-            <h3 class="modal-section-title">💡 Strategic Impact</h3>
-            <div class="modal-section-content">
-                Implemented comprehensive operations strategy achieving 20% cost reduction while improving delivery performance to 95% on-time rate. Vendor diversification reduced single-source dependencies by 60%, creating more resilient supply chain capable of withstanding market disruptions.
             </div>
         </div>
     </div>
