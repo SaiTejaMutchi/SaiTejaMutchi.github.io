@@ -16,11 +16,22 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: #1e293b;
+        }
+
+        /* Desktop styles - slider layout */
+        body.desktop {
             overflow: hidden;
             height: 100vh;
         }
 
-        /* Navigation - Exact match */
+        /* Mobile styles - stacked layout */
+        body.mobile {
+            overflow-x: hidden;
+            overflow-y: auto;
+            height: auto;
+        }
+
+        /* Navigation */
         .navbar {
             position: fixed;
             top: 0;
@@ -85,11 +96,62 @@
             transition: 0.3s;
             border-radius: 2px;
         }
-        /* Slider Container */
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1rem 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+
+        /* Slider Container - Desktop Only */
         .slider-container {
             height: 100vh;
             overflow: hidden;
             position: relative;
+        }
+
+        .desktop .slider-container {
+            display: block;
+        }
+
+        .mobile .slider-container {
+            display: none;
         }
 
         .slider-wrapper {
@@ -108,7 +170,25 @@
             padding-top: 80px;
         }
 
-        /* Slide Navigation Dots */
+        /* Mobile Container - Mobile Only */
+        .mobile-container {
+            display: none;
+            padding-top: 80px;
+        }
+
+        .mobile .mobile-container {
+            display: block;
+        }
+
+        .mobile-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+
+        /* Slide Navigation Dots - Desktop Only */
         .slide-navigation {
             position: fixed;
             right: 2rem;
@@ -118,6 +198,10 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+        }
+
+        .mobile .slide-navigation {
+            display: none;
         }
 
         .nav-dot {
@@ -143,7 +227,7 @@
         }
 
         /* Slide 1: Hero */
-        .slide-1 {
+        .slide-1, .mobile-section-1 {
             background: #2c3e50;
             color: white;
         }
@@ -256,7 +340,7 @@
         }
 
         /* Slide 2: What I Do */
-        .slide-2 {
+        .slide-2, .mobile-section-2 {
             background: #ecf0f1;
         }
 
@@ -266,7 +350,7 @@
             padding: 0 2rem;
         }
 
-        .slide-2 h2 {
+        .slide-2 h2, .mobile-section-2 h2 {
             font-size: 2.5rem;
             font-weight: 700;
             color: #2c3e50;
@@ -319,7 +403,7 @@
         }
 
         /* Slide 3: Beyond Work */
-        .slide-3 {
+        .slide-3, .mobile-section-3 {
             background: #34495e;
             color: white;
         }
@@ -363,16 +447,112 @@
             color: #ecf0f1;
             line-height: 1.6;
         }
-        .slide-3 h2 {
+
+        .slide-3 h2, .mobile-section-3 h2 {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #ecf0f1;;
+            color: #ecf0f1;
             text-align: center;
             margin-bottom: 3rem;
             font-family: 'Playfair Display', serif;
         }
 
-       
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+                padding: 0 1rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .key-metrics {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .metric {
+                flex-direction: row;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
+            }
+
+            .profile-img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .beyond-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .slide-2 h2, .mobile-section-2 h2,
+            .slide-3 h2, .mobile-section-3 h2 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .mobile-section {
+                min-height: auto;
+                padding: 3rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .slide-2 h2, .mobile-section-2 h2,
+            .slide-3 h2, .mobile-section-3 h2 {
+                font-size: 1.8rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .nav-logo a {
+                font-size: 1.3rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -407,14 +587,14 @@
         </div>
     </nav>
 
-    <!-- Slide Navigation -->
+    <!-- Desktop Slide Navigation -->
     <div class="slide-navigation">
         <div class="nav-dot active" data-slide="0"></div>
         <div class="nav-dot" data-slide="1"></div>
         <div class="nav-dot" data-slide="2"></div>
     </div>
 
-    <!-- Slider Container -->
+    <!-- Desktop Slider Container -->
     <div class="slider-container">
         <div class="slider-wrapper">
             <!-- Slide 1: Hero -->
@@ -510,7 +690,6 @@
                                 <h3>Tennis Enthusiast</h3>
                                 <p>Staying active through tennis and sports helps me recharge, stay disciplined, and bring energy into everything I do.</p>
                             </div>
-                            
                         </div>
 
                         <div class="beyond-card">
@@ -525,16 +704,145 @@
                     </div>
                 </div>
             </section>
+        </div>
+    </div>
 
+    <!-- Mobile Container -->
+    <div class="mobile-container">
+        <!-- Mobile Section 1: Hero -->
+        <section class="mobile-section mobile-section-1">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Product Strategy & <span class="highlight">Analytics Specialist</span></h1>
+                    <p class="hero-subtitle">Bridging technical depth with business strategy to solve complex problems. Currently MS Business Analytics @ Columbia Business School, with 3+ years building scalable solutions.</p>
+                    
+                    <div class="key-metrics">
+                        <div class="metric">
+                            <span class="metric-number">22%</span>
+                            <span class="metric-label">Engagement Improvement</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-number">1,000+</span>
+                            <span class="metric-label">Users Served</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-number">25.5%</span>
+                            <span class="metric-label">Cost Reduction</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-buttons">
+                        <a href="projects.html" class="btn-primary">View My Work</a>
+                        <a href="contact.html" class="btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="images/profile.jpg" alt="Sai Teja Mutchi" class="profile-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobile Section 2: What I Do -->
+        <section class="mobile-section mobile-section-2">
+            <div class="container">
+                <h2>What I Do</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <circle cx="12" cy="12" r="6"/>
+                                <circle cx="12" cy="12" r="2"/>
+                            </svg>
+                        </div>
+                        <h3>Product Management</h3>
+                        <p>User-centered platform development with data-driven optimization. Led AI-powered transcription platform serving 1,000+ weekly users.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="20" x2="18" y2="10"/>
+                                <line x1="12" y1="20" x2="12" y2="4"/>
+                                <line x1="6" y1="20" x2="6" y2="14"/>
+                            </svg>
+                        </div>
+                        <h3>Strategic Analytics</h3>
+                        <p>Business optimization through quantitative analysis. Applied statistical modeling and optimization to achieve 25.5% cost reductions.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 9a3 3 0 1 0-6 0v6a3 3 0 1 0 6 0V9z" />
+                                <line x1="9" y1="9" x2="7" y2="7"/>
+                                <line x1="15" y1="9" x2="17" y2="7"/>
+                                <line x1="15" y1="15" x2="17" y2="17"/>
+                                <line x1="9" y1="15" x2="7" y2="17"/>
+                            </svg>
+                        </div>
+                        <h3>AI Implementation</h3>
+                        <p>End-to-end ML product development. Built RAG pipelines and automated systems with 87% accuracy for financial analysis.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobile Section 3: Beyond Work -->
+        <section class="mobile-section mobile-section-3">
+            <div class="container">
+                <h2>Beyond Work</h2>
+                <div class="beyond-grid">
+                    <div class="beyond-card">
+                        <div class="beyond-image">
+                            <img src="images/Tennis.jpg" alt="Tennis Trophy">
+                        </div>
+                        <div class="beyond-content">
+                            <h3>Tennis Enthusiast</h3>
+                            <p>Staying active through tennis and sports helps me recharge, stay disciplined, and bring energy into everything I do.</p>
+                        </div>
+                    </div>
+
+                    <div class="beyond-card">
+                        <div class="beyond-image">
+                            <img src="images/Columbia.png" alt="Clubs & Activities">
+                        </div>
+                        <div class="beyond-content">
+                            <h3>Campus Involvement</h3>
+                            <p>Outside the classroom, I engage in hackathons, campus events, and leadership workshops that spark creativity and connection.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <script>
-        // Slider functionality
+        // Mobile detection and layout initialization
+        function detectMobile() {
+            const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                document.body.classList.add('mobile');
+                document.body.classList.remove('desktop');
+            } else {
+                document.body.classList.add('desktop');
+                document.body.classList.remove('mobile');
+            }
+            
+            return isMobile;
+        }
+
+        // Desktop slider functionality
         let currentSlide = 0;
         const totalSlides = 3;
         const sliderWrapper = document.querySelector('.slider-wrapper');
         const navDots = document.querySelectorAll('.nav-dot');
 
         function updateSlider() {
+            if (document.body.classList.contains('mobile')) return;
+            
             const translateX = -currentSlide * 100;
             sliderWrapper.style.transform = `translateX(${translateX}vw)`;
             
@@ -545,21 +853,27 @@
         }
 
         function goToSlide(slideIndex) {
+            if (document.body.classList.contains('mobile')) return;
+            
             if (slideIndex >= 0 && slideIndex < totalSlides) {
                 currentSlide = slideIndex;
                 updateSlider();
             }
         }
 
-        // Navigation dot clicks
+        // Navigation dot clicks (desktop only)
         navDots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
-                goToSlide(index);
+                if (!document.body.classList.contains('mobile')) {
+                    goToSlide(index);
+                }
             });
         });
 
-        // Keyboard navigation
+        // Keyboard navigation (desktop only)
         document.addEventListener('keydown', (e) => {
+            if (document.body.classList.contains('mobile')) return;
+            
             if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
                 goToSlide(currentSlide + 1);
             } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
@@ -567,10 +881,10 @@
             }
         });
 
-        // Wheel navigation
+        // Wheel navigation (desktop only)
         let isScrolling = false;
         document.addEventListener('wheel', (e) => {
-            if (isScrolling) return;
+            if (document.body.classList.contains('mobile') || isScrolling) return;
             
             isScrolling = true;
             setTimeout(() => { isScrolling = false; }, 1000);
@@ -591,9 +905,181 @@
             navMenu.classList.toggle('active');
         });
 
-        // Initialize first slide
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            detectMobile();
+            
+            // Close mobile menu on resize
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            
+            // Reset slider position if switching to desktop
+            if (document.body.classList.contains('desktop')) {
+                currentSlide = 0;
+                updateSlider();
+            }
+        });
+
+        // Smooth scrolling for mobile navigation
+        function smoothScrollTo(element) {
+            if (document.body.classList.contains('mobile') && element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Mobile section navigation
+        function setupMobileNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileSections = document.querySelectorAll('.mobile-section');
+            
+            // Keep Home link active and don't add scroll navigation on index page
+            navLinks[0].classList.add('active');
+            
+            // Remove navigation functionality for mobile sections on index page
+            // The navigation should only work for going to other pages, not scrolling within index
+        }
+
+        // Intersection Observer for mobile navigation highlighting
+        function setupMobileScrollSpy() {
+            if (document.body.classList.contains('desktop')) return;
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileSections = document.querySelectorAll('.mobile-section');
+            
+            // Keep Home link active on mobile - don't change it
+            navLinks[0].classList.add('active'); // Home should always be active on index page
+            
+            const observerOptions = {
+                threshold: 0.3,
+                rootMargin: '-100px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                // Don't change navigation highlighting on mobile for index page
+                // Just observe sections for potential future features
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Could add section-specific animations here
+                        // But don't change navigation
+                    }
+                });
+            }, observerOptions);
+            
+            mobileSections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        // Touch gestures for desktop slider on touch devices
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', e => {
+            if (document.body.classList.contains('desktop')) {
+                touchStartX = e.changedTouches[0].screenX;
+            }
+        });
+
+        document.addEventListener('touchend', e => {
+            if (document.body.classList.contains('desktop')) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const swipeDistance = touchEndX - touchStartX;
+            
+            if (Math.abs(swipeDistance) > swipeThreshold) {
+                if (swipeDistance > 0) {
+                    // Swipe right - go to previous slide
+                    goToSlide(currentSlide - 1);
+                } else {
+                    // Swipe left - go to next slide
+                    goToSlide(currentSlide + 1);
+                }
+            }
+        }
+
+        // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
-            updateSlider();
+            detectMobile();
+            
+            // Ensure Home link is always active on index page
+            const homeLink = document.querySelector('.nav-link[href="index.html"]');
+            if (homeLink) {
+                homeLink.classList.add('active');
+            }
+            
+            if (document.body.classList.contains('desktop')) {
+                updateSlider();
+            } else {
+                setupMobileNavigation();
+                setupMobileScrollSpy();
+                document.documentElement.style.scrollBehavior = 'smooth';
+            }
+        });
+
+        // Performance optimization: debounce resize events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        const debouncedResize = debounce(() => {
+            detectMobile();
+            
+            // Reinitialize appropriate functionality
+            if (document.body.classList.contains('desktop')) {
+                currentSlide = 0;
+                updateSlider();
+            } else {
+                setupMobileNavigation();
+                setupMobileScrollSpy();
+            }
+        }, 250);
+
+        window.addEventListener('resize', debouncedResize);
+
+        // Prevent horizontal scrolling on mobile
+        if (document.body.classList.contains('mobile')) {
+            document.body.style.overflowX = 'hidden';
+        }
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
         });
     </script>
 </body>
