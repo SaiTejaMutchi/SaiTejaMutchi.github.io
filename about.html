@@ -16,8 +16,19 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: #1e293b;
+        }
+
+        /* Desktop styles - slider layout */
+        body.desktop {
             overflow: hidden;
             height: 100vh;
+        }
+
+        /* Mobile styles - stacked layout */
+        body.mobile {
+            overflow-x: hidden;
+            overflow-y: auto;
+            height: auto;
         }
 
         /* Navigation */
@@ -86,11 +97,61 @@
             border-radius: 2px;
         }
 
-        /* Slider Container */
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1rem 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+
+        /* Slider Container - Desktop Only */
         .slider-container {
             height: 100vh;
             overflow: hidden;
             position: relative;
+        }
+
+        .desktop .slider-container {
+            display: block;
+        }
+
+        .mobile .slider-container {
+            display: none;
         }
 
         .slider-wrapper {
@@ -109,7 +170,25 @@
             padding-top: 80px;
         }
 
-        /* Slide Navigation Dots */
+        /* Mobile Container - Mobile Only */
+        .mobile-container {
+            display: none;
+            padding-top: 80px;
+        }
+
+        .mobile .mobile-container {
+            display: block;
+        }
+
+        .mobile-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+
+        /* Slide Navigation Dots - Desktop Only */
         .slide-navigation {
             position: fixed;
             right: 2rem;
@@ -119,6 +198,10 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+        }
+
+        .mobile .slide-navigation {
+            display: none;
         }
 
         .nav-dot {
@@ -144,13 +227,13 @@
         }
 
         /* Slide 1: My Journey */
-        .slide-1 {
+        .slide-1, .mobile-section-1 {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
             color: white;
             overflow: hidden;
         }
 
-        .slide-1::before {
+        .slide-1::before, .mobile-section-1::before {
             content: '';
             position: absolute;
             top: 0;
@@ -298,12 +381,12 @@
         }
 
         /* Slide 2: Excellence Through Experience */
-        .slide-2 {
+        .slide-2, .mobile-section-2 {
             background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
             padding: 2rem 0;
         }
 
-        .slide-2::before {
+        .slide-2::before, .mobile-section-2::before {
             content: '';
             position: absolute;
             top: 0;
@@ -460,57 +543,8 @@
             font-weight: 600;
         }
 
-        /* Convergence Section */
-        .convergence-section {
-            margin-top: 3rem;
-            text-align: center;
-            padding: 2.5rem;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            border-radius: 24px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .convergence-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .convergence-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .convergence-section h3 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .convergence-section p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #cbd5e1;
-        }
-
         /* Slide 3: Skills & Expertise */
-        .slide-3 {
+        .slide-3, .mobile-section-3 {
             background: white;
             padding: 2rem 0;
         }
@@ -595,13 +629,13 @@
         }
 
         /* Slide 4: What Drives Me */
-        .slide-4 {
+        .slide-4, .mobile-section-4 {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
             overflow: hidden;
         }
 
-        .slide-4::before {
+        .slide-4::before, .mobile-section-4::before {
             content: '';
             position: absolute;
             top: 0;
@@ -719,59 +753,6 @@
             padding: 2rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-                text-align: center;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .image-container {
-                width: 250px;
-                height: 250px;
-            }
-
-            .journey-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .values-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .slide-navigation {
-                right: 1rem;
-            }
-
-            .section-header h2 {
-                font-size: 2rem;
-            }
-
-            .motivation-content h2 {
-                font-size: 2rem;
-            }
-        }
-
         /* Smooth animations */
         .fade-in {
             opacity: 0;
@@ -782,6 +763,119 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+                padding: 0 1rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .image-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .journey-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+
+            .journey-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            .skill-category {
+                padding: 2rem 1.5rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .value-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .motivation-content h2 {
+                font-size: 2rem;
+            }
+
+            .motivation-content > p {
+                font-size: 1.1rem;
+            }
+
+            .final-quote {
+                padding: 2rem 1.5rem;
+            }
+
+            .final-quote h3 {
+                font-size: 1.3rem;
+            }
+
+            .mobile-section {
+                min-height: auto;
+                padding: 3rem 0;
+            }
+
+            .motivation-content {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .section-header h2,
+            .motivation-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .nav-logo a {
+                font-size: 1.3rem;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .timeline::before {
+                left: 12px;
+            }
+
+            .timeline-item::before {
+                left: -19px;
+            }
         }
     </style>
 </head>
@@ -817,7 +911,7 @@
         </div>
     </nav>
 
-    <!-- Slide Navigation -->
+    <!-- Desktop Slide Navigation -->
     <div class="slide-navigation">
         <div class="nav-dot active" data-slide="0"></div>
         <div class="nav-dot" data-slide="1"></div>
@@ -825,7 +919,7 @@
         <div class="nav-dot" data-slide="3"></div>
     </div>
 
-    <!-- Slider Container -->
+    <!-- Desktop Slider Container -->
     <div class="slider-container">
         <div class="slider-wrapper">
             <!-- Slide 1: My Journey -->
@@ -918,8 +1012,7 @@
                             </div>
                         </div>
                     </div>
-                    
-
+                </div>
             </section>
 
             <!-- Slide 3: Skills & Expertise -->
@@ -927,7 +1020,6 @@
                 <div class="slide-content">
                     <div class="section-header">
                         <h2>Skills & Expertise</h2>
-                        
                     </div>
                     
                     <div class="skills-grid">
@@ -998,14 +1090,200 @@
         </div>
     </div>
 
+    <!-- Mobile Container -->
+    <div class="mobile-container">
+        <!-- Mobile Section 1: My Journey -->
+        <section class="mobile-section mobile-section-1">
+            <div class="floating-elements">
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+            </div>
+            
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>My Journey</h1>
+                   
+                    <p>I began in a small Indian town, where my fascination with engineering was sparked by CAD tools in my father's workshop. That curiosity led me to the Indian Institute of Technology (IIT), where I ranked in the top 1% of over a million applicants.</p>
+                    
+                    <p>After graduation, I joined Dassault Systèmes as an R&D engineer. Over three years, I led development of high-impact CAD tools, migrated legacy software to the web, and improved machine learning based measurement systems by 25%.</p>
+                    
+                    <p>Wanting to merge technical expertise with strategic thinking, I transitioned to Columbia Business School. As an MSBA candidate, I've served as a course assistant, led AI research, and built a GPT-powered investment intelligence platform.</p>
+                    
+                    <p>From IIT to Columbia, from code to product, my path reflects a single theme: taking bold steps to solve complex problems at scale.</p>
+                </div>
+                
+                <div class="hero-image">
+                    <div class="image-container">
+                        <img src="images/about.png" alt="Sai Teja Mutchi">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobile Section 2: Excellence Through Experience -->
+        <section class="mobile-section mobile-section-2">
+            <div class="slide-content">
+                <div class="section-header">
+                    <h2>Excellence Through Experience</h2>
+                </div>
+                
+                <div class="journey-grid">
+                    <!-- Academic Excellence -->
+                    <div class="journey-card fade-in">
+                        <h3>Academic Excellence</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h4>Columbia Business School</h4>
+                                <div class="period">MS in Business Analytics (Aug 2024 – Dec 2025)</div>
+                                <ul>
+                                    <li>Course Assistant: Data Analytics, Optimization Models</li>
+                                    <li>Research: AI Teaching Assistant Research Project</li>
+                                    <li>Capstone: Investment Intelligence Platform</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <h4>Indian Institute of Technology Dharwad, India</h4>
+                                <div class="period">BS in Mechanical Engineering (2017 – 2021)</div>
+                                <ul>
+                                    <li>Top 1% in JEE Advanced (1M+ applicants)</li>
+                                    <li>Thesis: Robotic Arm with Computer Vision</li>
+                                    <li>Focus: Programming, ML, Data Analysis, Robotics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Professional Impact -->
+                    <div class="journey-card fade-in">
+                        <h3>Professional Impact</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h4>Columbia Build Lab</h4>
+                                <div class="period">Product Manager Intern (Jan 2025 - May 2025)</div>
+                                <ul>
+                                    <li>Built roadmap for AI-powered subtitling platform</li>
+                                    <li>Led product design and pricing strategies</li>
+                                    <li>Delivered product used by 200+ users across 5 cohorts</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <h4>Dassault Systèmes</h4>
+                                <div class="period">R&D Development Engineer (Aug 2021 – Jul 2024)</div>
+                                <ul>
+                                    <li>Built software products used by global clients</li>
+                                    <li>Migrated legacy applications to modern web platforms</li>
+                                    <li>Led improvements to UX and product strategy</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobile Section 3: Skills & Expertise -->
+        <section class="mobile-section mobile-section-3">
+            <div class="slide-content">
+                <div class="section-header">
+                    <h2>Skills & Expertise</h2>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="skill-category fade-in">
+                        <h3>Product & Strategy</h3>
+                        <ul class="skill-list">
+                            <li>Product Strategy & Roadmapping</li>
+                            <li>User Research & A/B Testing</li>
+                            <li>Cross-functional Team Leadership</li>
+                            <li>Market Analysis & Competitive Strategy</li>
+                            <li>Agile/Scrum Methodologies</li>
+                            <li>Stakeholder Management</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category fade-in">
+                        <h3>Analytics & Data Science</h3>
+                        <ul class="skill-list">
+                            <li>Python, SQL, R, MATLAB</li>
+                            <li>Machine Learning (Scikit-learn, TensorFlow)</li>
+                            <li>Statistical Modeling & Time Series Analysis</li>
+                            <li>A/B Testing & Experimentation</li>
+                            <li>Data Visualization (Tableau, matplotlib)</li>
+                            <li>ETL Pipelines & Database Management</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category fade-in">
+                        <h3>Business & Finance</h3>
+                        <ul class="skill-list">
+                            <li>Financial Modeling & Valuation</li>
+                            <li>Risk Assessment (VaR, Monte Carlo)</li>
+                            <li>Optimization Modeling (Linear/Integer Programming)</li>
+                            <li>Business Case Development</li>
+                            <li>Strategic Planning & Analysis</li>
+                            <li>Process Optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobile Section 4: What Drives Me -->
+        <section class="mobile-section mobile-section-4">
+            <div class="slide-content">
+                <div class="motivation-content">
+                    <h2>What Drives Me</h2>
+                    <p>From a small village to global stages, I've learned that the biggest barriers exist only in our minds. My journey has taught me that with relentless curiosity, structured thinking, and the courage to take bold leaps, we can transform not just our own lives but entire industries.</p>
+                    
+                    <div class="values-grid">
+                        <div class="value-card fade-in">
+                            <h3>Breaking Barriers</h3>
+                            <p>Whether it's cracking JEE as a village kid or transitioning from engineering to product strategy, I thrive on proving that excellence has no boundaries.</p>
+                        </div>
+                        
+                        <div class="value-card fade-in">
+                            <h3>Measurable Impact</h3>
+                            <p>From 25% accuracy improvements serving millions to 22% engagement boosts, I believe in creating value that can be measured, scaled, and celebrated.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="final-quote fade-in">
+                        <h3>The spark that lit in my father's workshop still burns today, but now it's focused on building products that can transform millions of lives.</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <script>
-        // Slider functionality
+        // Mobile detection and layout initialization
+        function detectMobile() {
+            const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                document.body.classList.add('mobile');
+                document.body.classList.remove('desktop');
+            } else {
+                document.body.classList.add('desktop');
+                document.body.classList.remove('mobile');
+            }
+            
+            return isMobile;
+        }
+
+        // Desktop slider functionality
         let currentSlide = 0;
         const totalSlides = 4;
         const sliderWrapper = document.querySelector('.slider-wrapper');
         const navDots = document.querySelectorAll('.nav-dot');
 
         function updateSlider() {
+            if (document.body.classList.contains('mobile')) return;
+            
             const translateX = -currentSlide * 100;
             sliderWrapper.style.transform = `translateX(${translateX}vw)`;
             
@@ -1016,15 +1294,19 @@
 
             // Trigger animations for visible slide
             const activeSlide = document.querySelector(`.slide:nth-child(${currentSlide + 1})`);
-            const fadeElements = activeSlide.querySelectorAll('.fade-in');
-            fadeElements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.classList.add('visible');
-                }, index * 200);
-            });
+            if (activeSlide) {
+                const fadeElements = activeSlide.querySelectorAll('.fade-in');
+                fadeElements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('visible');
+                    }, index * 200);
+                });
+            }
         }
 
         function goToSlide(slideIndex) {
+            if (document.body.classList.contains('mobile')) return;
+            
             if (slideIndex >= 0 && slideIndex < totalSlides) {
                 // Reset all fade-in elements
                 document.querySelectorAll('.fade-in').forEach(el => {
@@ -1036,15 +1318,19 @@
             }
         }
 
-        // Navigation dot clicks
+        // Navigation dot clicks (desktop only)
         navDots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
-                goToSlide(index);
+                if (!document.body.classList.contains('mobile')) {
+                    goToSlide(index);
+                }
             });
         });
 
-        // Keyboard navigation
+        // Keyboard navigation (desktop only)
         document.addEventListener('keydown', (e) => {
+            if (document.body.classList.contains('mobile')) return;
+            
             if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
                 goToSlide(currentSlide + 1);
             } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
@@ -1052,10 +1338,10 @@
             }
         });
 
-        // Wheel navigation
+        // Wheel navigation (desktop only)
         let isScrolling = false;
         document.addEventListener('wheel', (e) => {
-            if (isScrolling) return;
+            if (document.body.classList.contains('mobile') || isScrolling) return;
             
             isScrolling = true;
             setTimeout(() => { isScrolling = false; }, 1000);
@@ -1067,17 +1353,21 @@
             }
         });
 
-        // Touch navigation for mobile
+        // Touch navigation for desktop slider on touch devices
         let touchStartY = 0;
         let touchEndY = 0;
 
         document.addEventListener('touchstart', (e) => {
-            touchStartY = e.changedTouches[0].screenY;
+            if (document.body.classList.contains('desktop')) {
+                touchStartY = e.changedTouches[0].screenY;
+            }
         });
 
         document.addEventListener('touchend', (e) => {
-            touchEndY = e.changedTouches[0].screenY;
-            handleSwipe();
+            if (document.body.classList.contains('desktop')) {
+                touchEndY = e.changedTouches[0].screenY;
+                handleSwipe();
+            }
         });
 
         function handleSwipe() {
@@ -1102,13 +1392,86 @@
             navMenu.classList.toggle('active');
         });
 
-        // Initialize first slide
-        document.addEventListener('DOMContentLoaded', function() {
-            updateSlider();
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
         });
 
-        // Parallax effect for floating elements
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Mobile intersection observer for scroll spy
+        function setupMobileScrollSpy() {
+            if (document.body.classList.contains('desktop')) return;
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileSections = document.querySelectorAll('.mobile-section');
+            
+            const observerOptions = {
+                threshold: 0.3,
+                rootMargin: '-100px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Trigger fade-in animations for visible elements
+                        const fadeElements = entry.target.querySelectorAll('.fade-in');
+                        fadeElements.forEach((el, index) => {
+                            setTimeout(() => {
+                                el.classList.add('visible');
+                            }, index * 100);
+                        });
+                    }
+                });
+            }, observerOptions);
+            
+            mobileSections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            detectMobile();
+            
+            // Close mobile menu on resize
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            
+            // Reset slider position if switching to desktop
+            if (document.body.classList.contains('desktop')) {
+                currentSlide = 0;
+                updateSlider();
+            } else {
+                setupMobileScrollSpy();
+            }
+        });
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            detectMobile();
+            
+            if (document.body.classList.contains('desktop')) {
+                updateSlider();
+            } else {
+                setupMobileScrollSpy();
+                document.documentElement.style.scrollBehavior = 'smooth';
+            }
+        });
+
+        // Parallax effect for floating elements (desktop only)
         window.addEventListener('scroll', function() {
+            if (document.body.classList.contains('desktop')) return;
+            
             const scrolled = window.pageYOffset;
             const parallax = document.querySelectorAll('.floating-element');
             const speed = 0.5;
@@ -1119,12 +1482,44 @@
             });
         });
 
-        // Auto-advance slides (optional - uncomment to enable)
-        /*
-        setInterval(() => {
-            goToSlide((currentSlide + 1) % totalSlides);
-        }, 10000); // Change slide every 10 seconds
-        */
+        // Performance optimization: debounce resize events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        const debouncedResize = debounce(() => {
+            detectMobile();
+            
+            // Reinitialize appropriate functionality
+            if (document.body.classList.contains('desktop')) {
+                currentSlide = 0;
+                updateSlider();
+            } else {
+                setupMobileScrollSpy();
+            }
+        }, 250);
+
+        window.addEventListener('resize', debouncedResize);
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
     </script>
 </body>
 </html>
